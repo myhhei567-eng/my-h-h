@@ -1,0 +1,99 @@
+# AWS Multi-Agent 智能运维巡检系统 配置文件
+
+# 运行模式: mock(模拟模式,无需AWS凭证) / live(实际AWS环境)
+mode: mock
+
+# AWS 配置
+aws:
+  region: ap-northeast-1
+  profile: default
+
+# 巡检配置
+inspection:
+  # 巡检间隔(秒), 0=仅运行一次
+  interval: 0
+  # 扫描的资源类型
+  resource_types:
+    - ec2
+    - s3
+    - rds
+    - security_group
+    - iam
+
+# 安全规则
+security_rules:
+  # EC2 相关
+  ec2:
+    - id: EC2-001
+      name: "EC2实例未加密EBS卷"
+      severity: HIGH
+      description: "检查EC2实例的EBS卷是否启用加密"
+    - id: EC2-002
+      name: "EC2实例使用默认安全组"
+      severity: MEDIUM
+      description: "检查EC2实例是否使用了默认安全组"
+    - id: EC2-003
+      name: "EC2实例无IAM角色"
+      severity: MEDIUM
+      description: "检查EC2实例是否关联了IAM实例配置文件"
+
+  # S3 相关
+  s3:
+    - id: S3-001
+      name: "S3存储桶公开访问"
+      severity: CRITICAL
+      description: "检查S3存储桶是否开启了公开访问"
+    - id: S3-002
+      name: "S3存储桶未启用版本控制"
+      severity: LOW
+      description: "检查S3存储桶是否启用了版本控制"
+    - id: S3-003
+      name: "S3存储桶未启用服务端加密"
+      severity: HIGH
+      description: "检查S3存储桶是否启用了默认加密"
+
+  # RDS 相关
+  rds:
+    - id: RDS-001
+      name: "RDS实例公开可访问"
+      severity: CRITICAL
+      description: "检查RDS实例是否开启了公开访问"
+    - id: RDS-002
+      name: "RDS实例未启用多可用区"
+      severity: MEDIUM
+      description: "检查RDS实例是否启用了MultiAZ"
+    - id: RDS-003
+      name: "RDS实例未启用自动备份"
+      severity: HIGH
+      description: "检查RDS实例是否启用了自动备份"
+
+  # 安全组相关
+  security_group:
+    - id: SG-001
+      name: "安全组开放全部入站端口"
+      severity: CRITICAL
+      description: "检查安全组是否允许0.0.0.0/0的全端口入站"
+    - id: SG-002
+      name: "安全组开放SSH到全网"
+      severity: HIGH
+      description: "检查安全组是否允许0.0.0.0/0的SSH(22端口)入站"
+    - id: SG-003
+      name: "安全组开放RDP到全网"
+      severity: HIGH
+      description: "检查安全组是否允许0.0.0.0/0的RDP(3389端口)入站"
+
+  # IAM 相关
+  iam:
+    - id: IAM-001
+      name: "IAM用户未启用MFA"
+      severity: HIGH
+      description: "检查IAM用户是否启用了多因素认证"
+    - id: IAM-002
+      name: "IAM用户拥有管理员权限"
+      severity: CRITICAL
+      description: "检查IAM用户是否拥有AdministratorAccess策略"
+
+# Dashboard配置
+dashboard:
+  host: 127.0.0.1
+  port: 5000

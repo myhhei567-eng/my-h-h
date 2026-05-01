@@ -1,0 +1,4995 @@
+{
+  "report_id": "b07095c1",
+  "scan_time": "2026-05-01T20:53:53.555021",
+  "resources_scanned": 14,
+  "findings_count": 17,
+  "critical_count": 4,
+  "high_count": 7,
+  "medium_count": 4,
+  "low_count": 2,
+  "overall_score": 0,
+  "findings": [
+    {
+      "finding_id": "aad44334",
+      "rule_id": "EC2-001",
+      "rule_name": "EC2实例未加密EBS卷",
+      "severity": "HIGH",
+      "resource": {
+        "resource_id": "i-0a1b2c3d4e5f60001",
+        "resource_type": "ec2",
+        "name": "web-server-prod-01",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production",
+          "Team": "backend"
+        },
+        "config": {
+          "instance_type": "t3.medium",
+          "state": "running",
+          "public_ip": "54.199.100.10",
+          "private_ip": "10.0.1.100",
+          "security_groups": [
+            "sg-default-001"
+          ],
+          "iam_instance_profile": null,
+          "ebs_volumes": [
+            {
+              "volume_id": "vol-001",
+              "encrypted": false,
+              "size_gb": 50
+            }
+          ],
+          "vpc_id": "vpc-0abc001",
+          "subnet_id": "subnet-pub-001"
+        },
+        "created_at": "2025-11-15T08:30:00Z"
+      },
+      "description": "EBS卷 vol-001 未启用加密",
+      "details": "实例 web-server-prod-01 的EBS卷 vol-001 (50GB) 未启用加密，存在数据泄露风险",
+      "detected_at": "2026-05-01T20:53:49.854463"
+    },
+    {
+      "finding_id": "f61d8183",
+      "rule_id": "EC2-002",
+      "rule_name": "EC2实例使用默认安全组",
+      "severity": "MEDIUM",
+      "resource": {
+        "resource_id": "i-0a1b2c3d4e5f60001",
+        "resource_type": "ec2",
+        "name": "web-server-prod-01",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production",
+          "Team": "backend"
+        },
+        "config": {
+          "instance_type": "t3.medium",
+          "state": "running",
+          "public_ip": "54.199.100.10",
+          "private_ip": "10.0.1.100",
+          "security_groups": [
+            "sg-default-001"
+          ],
+          "iam_instance_profile": null,
+          "ebs_volumes": [
+            {
+              "volume_id": "vol-001",
+              "encrypted": false,
+              "size_gb": 50
+            }
+          ],
+          "vpc_id": "vpc-0abc001",
+          "subnet_id": "subnet-pub-001"
+        },
+        "created_at": "2025-11-15T08:30:00Z"
+      },
+      "description": "实例 web-server-prod-01 使用了默认安全组 sg-default-001",
+      "details": "默认安全组规则不够精细，建议创建专用安全组",
+      "detected_at": "2026-05-01T20:53:49.854503"
+    },
+    {
+      "finding_id": "eff082d1",
+      "rule_id": "EC2-003",
+      "rule_name": "EC2实例无IAM角色",
+      "severity": "MEDIUM",
+      "resource": {
+        "resource_id": "i-0a1b2c3d4e5f60001",
+        "resource_type": "ec2",
+        "name": "web-server-prod-01",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production",
+          "Team": "backend"
+        },
+        "config": {
+          "instance_type": "t3.medium",
+          "state": "running",
+          "public_ip": "54.199.100.10",
+          "private_ip": "10.0.1.100",
+          "security_groups": [
+            "sg-default-001"
+          ],
+          "iam_instance_profile": null,
+          "ebs_volumes": [
+            {
+              "volume_id": "vol-001",
+              "encrypted": false,
+              "size_gb": 50
+            }
+          ],
+          "vpc_id": "vpc-0abc001",
+          "subnet_id": "subnet-pub-001"
+        },
+        "created_at": "2025-11-15T08:30:00Z"
+      },
+      "description": "实例 web-server-prod-01 未关联IAM实例配置文件",
+      "details": "未关联IAM角色的实例无法安全调用其他AWS服务",
+      "detected_at": "2026-05-01T20:53:49.854521"
+    },
+    {
+      "finding_id": "347ec094",
+      "rule_id": "EC2-001",
+      "rule_name": "EC2实例未加密EBS卷",
+      "severity": "HIGH",
+      "resource": {
+        "resource_id": "i-0a1b2c3d4e5f60003",
+        "resource_type": "ec2",
+        "name": "dev-test-server",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "dev"
+        },
+        "config": {
+          "instance_type": "t3.micro",
+          "state": "running",
+          "public_ip": "54.199.100.20",
+          "private_ip": "10.0.3.10",
+          "security_groups": [
+            "sg-wide-open-001"
+          ],
+          "iam_instance_profile": null,
+          "ebs_volumes": [
+            {
+              "volume_id": "vol-003",
+              "encrypted": false,
+              "size_gb": 20
+            }
+          ],
+          "vpc_id": "vpc-0abc001",
+          "subnet_id": "subnet-pub-002"
+        },
+        "created_at": "2026-01-20T14:00:00Z"
+      },
+      "description": "EBS卷 vol-003 未启用加密",
+      "details": "实例 dev-test-server 的EBS卷 vol-003 (20GB) 未启用加密，存在数据泄露风险",
+      "detected_at": "2026-05-01T20:53:49.854558"
+    },
+    {
+      "finding_id": "574a2508",
+      "rule_id": "EC2-003",
+      "rule_name": "EC2实例无IAM角色",
+      "severity": "MEDIUM",
+      "resource": {
+        "resource_id": "i-0a1b2c3d4e5f60003",
+        "resource_type": "ec2",
+        "name": "dev-test-server",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "dev"
+        },
+        "config": {
+          "instance_type": "t3.micro",
+          "state": "running",
+          "public_ip": "54.199.100.20",
+          "private_ip": "10.0.3.10",
+          "security_groups": [
+            "sg-wide-open-001"
+          ],
+          "iam_instance_profile": null,
+          "ebs_volumes": [
+            {
+              "volume_id": "vol-003",
+              "encrypted": false,
+              "size_gb": 20
+            }
+          ],
+          "vpc_id": "vpc-0abc001",
+          "subnet_id": "subnet-pub-002"
+        },
+        "created_at": "2026-01-20T14:00:00Z"
+      },
+      "description": "实例 dev-test-server 未关联IAM实例配置文件",
+      "details": "未关联IAM角色的实例无法安全调用其他AWS服务",
+      "detected_at": "2026-05-01T20:53:49.854574"
+    },
+    {
+      "finding_id": "982ae17d",
+      "rule_id": "S3-001",
+      "rule_name": "S3存储桶公开访问",
+      "severity": "CRITICAL",
+      "resource": {
+        "resource_id": "company-public-assets-bucket",
+        "resource_type": "s3",
+        "name": "company-public-assets-bucket",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production"
+        },
+        "config": {
+          "public_access_block": {
+            "block_public_acls": false,
+            "block_public_policy": false,
+            "ignore_public_acls": false,
+            "restrict_public_buckets": false
+          },
+          "versioning": false,
+          "encryption": null,
+          "bucket_policy_public": true,
+          "object_count": 15420,
+          "total_size_gb": 128.5
+        },
+        "created_at": "2025-06-10T05:00:00Z"
+      },
+      "description": "存储桶 company-public-assets-bucket 允许公开访问",
+      "details": "存储桶包含 15420 个对象 (128.5GB)，存在严重数据泄露风险",
+      "detected_at": "2026-05-01T20:53:49.854611"
+    },
+    {
+      "finding_id": "6e1ace30",
+      "rule_id": "S3-002",
+      "rule_name": "S3存储桶未启用版本控制",
+      "severity": "LOW",
+      "resource": {
+        "resource_id": "company-public-assets-bucket",
+        "resource_type": "s3",
+        "name": "company-public-assets-bucket",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production"
+        },
+        "config": {
+          "public_access_block": {
+            "block_public_acls": false,
+            "block_public_policy": false,
+            "ignore_public_acls": false,
+            "restrict_public_buckets": false
+          },
+          "versioning": false,
+          "encryption": null,
+          "bucket_policy_public": true,
+          "object_count": 15420,
+          "total_size_gb": 128.5
+        },
+        "created_at": "2025-06-10T05:00:00Z"
+      },
+      "description": "存储桶 company-public-assets-bucket 未启用版本控制",
+      "details": "未启用版本控制可能导致误删数据无法恢复",
+      "detected_at": "2026-05-01T20:53:49.854621"
+    },
+    {
+      "finding_id": "c09b0b31",
+      "rule_id": "S3-003",
+      "rule_name": "S3存储桶未启用服务端加密",
+      "severity": "HIGH",
+      "resource": {
+        "resource_id": "company-public-assets-bucket",
+        "resource_type": "s3",
+        "name": "company-public-assets-bucket",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production"
+        },
+        "config": {
+          "public_access_block": {
+            "block_public_acls": false,
+            "block_public_policy": false,
+            "ignore_public_acls": false,
+            "restrict_public_buckets": false
+          },
+          "versioning": false,
+          "encryption": null,
+          "bucket_policy_public": true,
+          "object_count": 15420,
+          "total_size_gb": 128.5
+        },
+        "created_at": "2025-06-10T05:00:00Z"
+      },
+      "description": "存储桶 company-public-assets-bucket 未启用默认加密",
+      "details": "未加密的存储桶中数据以明文存储",
+      "detected_at": "2026-05-01T20:53:49.854630"
+    },
+    {
+      "finding_id": "676febcc",
+      "rule_id": "S3-002",
+      "rule_name": "S3存储桶未启用版本控制",
+      "severity": "LOW",
+      "resource": {
+        "resource_id": "company-backup-data",
+        "resource_type": "s3",
+        "name": "company-backup-data",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production"
+        },
+        "config": {
+          "public_access_block": {
+            "block_public_acls": true,
+            "block_public_policy": true,
+            "ignore_public_acls": true,
+            "restrict_public_buckets": true
+          },
+          "versioning": false,
+          "encryption": "aws:kms",
+          "bucket_policy_public": false,
+          "object_count": 50200,
+          "total_size_gb": 512.0
+        },
+        "created_at": "2025-04-15T12:00:00Z"
+      },
+      "description": "存储桶 company-backup-data 未启用版本控制",
+      "details": "未启用版本控制可能导致误删数据无法恢复",
+      "detected_at": "2026-05-01T20:53:49.854656"
+    },
+    {
+      "finding_id": "808d71e6",
+      "rule_id": "RDS-001",
+      "rule_name": "RDS实例公开可访问",
+      "severity": "CRITICAL",
+      "resource": {
+        "resource_id": "db-prod-mysql-001",
+        "resource_type": "rds",
+        "name": "prod-mysql-main",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production",
+          "Team": "backend"
+        },
+        "config": {
+          "engine": "mysql",
+          "engine_version": "8.0.35",
+          "instance_class": "db.r6g.large",
+          "publicly_accessible": true,
+          "multi_az": false,
+          "storage_encrypted": true,
+          "backup_retention_period": 0,
+          "vpc_id": "vpc-0abc001",
+          "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+          "port": 3306,
+          "allocated_storage_gb": 200
+        },
+        "created_at": "2025-08-20T09:00:00Z"
+      },
+      "description": "RDS实例 prod-mysql-main (mysql) 开启了公开访问",
+      "details": "数据库端点 prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com 可从互联网直接访问，存在严重安全风险",
+      "detected_at": "2026-05-01T20:53:49.854674"
+    },
+    {
+      "finding_id": "02095978",
+      "rule_id": "RDS-002",
+      "rule_name": "RDS实例未启用多可用区",
+      "severity": "MEDIUM",
+      "resource": {
+        "resource_id": "db-prod-mysql-001",
+        "resource_type": "rds",
+        "name": "prod-mysql-main",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production",
+          "Team": "backend"
+        },
+        "config": {
+          "engine": "mysql",
+          "engine_version": "8.0.35",
+          "instance_class": "db.r6g.large",
+          "publicly_accessible": true,
+          "multi_az": false,
+          "storage_encrypted": true,
+          "backup_retention_period": 0,
+          "vpc_id": "vpc-0abc001",
+          "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+          "port": 3306,
+          "allocated_storage_gb": 200
+        },
+        "created_at": "2025-08-20T09:00:00Z"
+      },
+      "description": "RDS实例 prod-mysql-main 未启用MultiAZ",
+      "details": "单可用区部署存在单点故障风险",
+      "detected_at": "2026-05-01T20:53:49.854683"
+    },
+    {
+      "finding_id": "3cb98a9a",
+      "rule_id": "RDS-003",
+      "rule_name": "RDS实例未启用自动备份",
+      "severity": "HIGH",
+      "resource": {
+        "resource_id": "db-prod-mysql-001",
+        "resource_type": "rds",
+        "name": "prod-mysql-main",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "production",
+          "Team": "backend"
+        },
+        "config": {
+          "engine": "mysql",
+          "engine_version": "8.0.35",
+          "instance_class": "db.r6g.large",
+          "publicly_accessible": true,
+          "multi_az": false,
+          "storage_encrypted": true,
+          "backup_retention_period": 0,
+          "vpc_id": "vpc-0abc001",
+          "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+          "port": 3306,
+          "allocated_storage_gb": 200
+        },
+        "created_at": "2025-08-20T09:00:00Z"
+      },
+      "description": "RDS实例 prod-mysql-main 的备份保留期为0天",
+      "details": "未启用自动备份，数据丢失将无法恢复",
+      "detected_at": "2026-05-01T20:53:49.854695"
+    },
+    {
+      "finding_id": "a2c24d03",
+      "rule_id": "SG-001",
+      "rule_name": "安全组开放全部入站端口",
+      "severity": "CRITICAL",
+      "resource": {
+        "resource_id": "sg-wide-open-001",
+        "resource_type": "security_group",
+        "name": "wide-open-dev-sg",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "dev"
+        },
+        "config": {
+          "vpc_id": "vpc-0abc001",
+          "description": "Dev security group - TEMP wide open",
+          "inbound_rules": [
+            {
+              "protocol": "-1",
+              "port_range": "All",
+              "source": "0.0.0.0/0"
+            },
+            {
+              "protocol": "tcp",
+              "port_range": "22",
+              "source": "0.0.0.0/0"
+            },
+            {
+              "protocol": "tcp",
+              "port_range": "3389",
+              "source": "0.0.0.0/0"
+            }
+          ],
+          "outbound_rules": [
+            {
+              "protocol": "-1",
+              "port_range": "All",
+              "destination": "0.0.0.0/0"
+            }
+          ],
+          "is_default": false
+        },
+        "created_at": ""
+      },
+      "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的全端口入站",
+      "details": "安全组 sg-wide-open-001 对互联网完全开放，所有端口均可被访问",
+      "detected_at": "2026-05-01T20:53:49.854731"
+    },
+    {
+      "finding_id": "bcaa9e8f",
+      "rule_id": "SG-002",
+      "rule_name": "安全组开放SSH到全网",
+      "severity": "HIGH",
+      "resource": {
+        "resource_id": "sg-wide-open-001",
+        "resource_type": "security_group",
+        "name": "wide-open-dev-sg",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "dev"
+        },
+        "config": {
+          "vpc_id": "vpc-0abc001",
+          "description": "Dev security group - TEMP wide open",
+          "inbound_rules": [
+            {
+              "protocol": "-1",
+              "port_range": "All",
+              "source": "0.0.0.0/0"
+            },
+            {
+              "protocol": "tcp",
+              "port_range": "22",
+              "source": "0.0.0.0/0"
+            },
+            {
+              "protocol": "tcp",
+              "port_range": "3389",
+              "source": "0.0.0.0/0"
+            }
+          ],
+          "outbound_rules": [
+            {
+              "protocol": "-1",
+              "port_range": "All",
+              "destination": "0.0.0.0/0"
+            }
+          ],
+          "is_default": false
+        },
+        "created_at": ""
+      },
+      "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的SSH访问",
+      "details": "SSH端口对互联网开放，容易遭受暴力破解攻击",
+      "detected_at": "2026-05-01T20:53:49.854744"
+    },
+    {
+      "finding_id": "8050b87f",
+      "rule_id": "SG-003",
+      "rule_name": "安全组开放RDP到全网",
+      "severity": "HIGH",
+      "resource": {
+        "resource_id": "sg-wide-open-001",
+        "resource_type": "security_group",
+        "name": "wide-open-dev-sg",
+        "region": "ap-northeast-1",
+        "tags": {
+          "Environment": "dev"
+        },
+        "config": {
+          "vpc_id": "vpc-0abc001",
+          "description": "Dev security group - TEMP wide open",
+          "inbound_rules": [
+            {
+              "protocol": "-1",
+              "port_range": "All",
+              "source": "0.0.0.0/0"
+            },
+            {
+              "protocol": "tcp",
+              "port_range": "22",
+              "source": "0.0.0.0/0"
+            },
+            {
+              "protocol": "tcp",
+              "port_range": "3389",
+              "source": "0.0.0.0/0"
+            }
+          ],
+          "outbound_rules": [
+            {
+              "protocol": "-1",
+              "port_range": "All",
+              "destination": "0.0.0.0/0"
+            }
+          ],
+          "is_default": false
+        },
+        "created_at": ""
+      },
+      "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的RDP访问",
+      "details": "RDP端口对互联网开放，容易遭受暴力破解攻击",
+      "detected_at": "2026-05-01T20:53:49.854754"
+    },
+    {
+      "finding_id": "6c08578c",
+      "rule_id": "IAM-001",
+      "rule_name": "IAM用户未启用MFA",
+      "severity": "HIGH",
+      "resource": {
+        "resource_id": "AIDA1234567890ADMIN",
+        "resource_type": "iam",
+        "name": "admin-user",
+        "region": "global",
+        "tags": {
+          "Department": "IT"
+        },
+        "config": {
+          "user_type": "IAM User",
+          "mfa_enabled": false,
+          "has_console_access": true,
+          "access_keys": [
+            {
+              "key_id": "AKIA...XYZ1",
+              "status": "Active",
+              "last_used": "2026-04-29"
+            }
+          ],
+          "policies": [
+            {
+              "policy_name": "AdministratorAccess",
+              "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+            }
+          ],
+          "groups": [
+            "Administrators"
+          ],
+          "last_login": "2026-04-29T15:30:00Z"
+        },
+        "created_at": "2025-01-10T00:00:00Z"
+      },
+      "description": "IAM用户 admin-user 未启用多因素认证",
+      "details": "用户有控制台访问权限但未启用MFA，账号容易被劫持",
+      "detected_at": "2026-05-01T20:53:49.854775"
+    },
+    {
+      "finding_id": "6b114038",
+      "rule_id": "IAM-002",
+      "rule_name": "IAM用户拥有管理员权限",
+      "severity": "CRITICAL",
+      "resource": {
+        "resource_id": "AIDA1234567890ADMIN",
+        "resource_type": "iam",
+        "name": "admin-user",
+        "region": "global",
+        "tags": {
+          "Department": "IT"
+        },
+        "config": {
+          "user_type": "IAM User",
+          "mfa_enabled": false,
+          "has_console_access": true,
+          "access_keys": [
+            {
+              "key_id": "AKIA...XYZ1",
+              "status": "Active",
+              "last_used": "2026-04-29"
+            }
+          ],
+          "policies": [
+            {
+              "policy_name": "AdministratorAccess",
+              "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+            }
+          ],
+          "groups": [
+            "Administrators"
+          ],
+          "last_login": "2026-04-29T15:30:00Z"
+        },
+        "created_at": "2025-01-10T00:00:00Z"
+      },
+      "description": "IAM用户 admin-user 拥有AdministratorAccess权限",
+      "details": "最小权限原则: 用户不应直接拥有管理员权限",
+      "detected_at": "2026-05-01T20:53:49.854786"
+    }
+  ],
+  "analyses": [
+    {
+      "analysis_id": "2dfc2f31",
+      "finding": {
+        "finding_id": "982ae17d",
+        "rule_id": "S3-001",
+        "rule_name": "S3存储桶公开访问",
+        "severity": "CRITICAL",
+        "resource": {
+          "resource_id": "company-public-assets-bucket",
+          "resource_type": "s3",
+          "name": "company-public-assets-bucket",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production"
+          },
+          "config": {
+            "public_access_block": {
+              "block_public_acls": false,
+              "block_public_policy": false,
+              "ignore_public_acls": false,
+              "restrict_public_buckets": false
+            },
+            "versioning": false,
+            "encryption": null,
+            "bucket_policy_public": true,
+            "object_count": 15420,
+            "total_size_gb": 128.5
+          },
+          "created_at": "2025-06-10T05:00:00Z"
+        },
+        "description": "存储桶 company-public-assets-bucket 允许公开访问",
+        "details": "存储桶包含 15420 个对象 (128.5GB)，存在严重数据泄露风险",
+        "detected_at": "2026-05-01T20:53:49.854611"
+      },
+      "root_cause": "存储桶策略允许公共访问，且未启用公共访问阻止功能",
+      "impact_assessment": "存储桶中的所有对象可被互联网上任何人访问，可能导致敏感数据大规模泄露",
+      "risk_score": 100,
+      "related_resources": [
+        "S3-002",
+        "S3-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 2,
+          "thought": "分析第1个发现 [S3-001] S3存储桶公开访问 (严重程度: CRITICAL), 资源: company-public-assets-bucket。根因: 存储桶策略允许公共访问，且未启用公共访问阻止功能",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "S3-001"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:50.006467"
+        },
+        {
+          "step_number": 3,
+          "thought": "影响评估: 存储桶中的所有对象可被互联网上任何人访问，可能导致敏感数据大规模泄露。风险评分: 100/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:50.057217"
+        },
+        {
+          "step_number": 4,
+          "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-002', 'S3-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:50.107868"
+        }
+      ],
+      "recommendation": "1. 立即启用S3公共访问阻止 2. 审计并删除公共Bucket Policy 3. 使用CloudFront分发替代直接公开",
+      "analyzed_at": "2026-05-01T20:53:50.158524"
+    },
+    {
+      "analysis_id": "a1cd6b86",
+      "finding": {
+        "finding_id": "808d71e6",
+        "rule_id": "RDS-001",
+        "rule_name": "RDS实例公开可访问",
+        "severity": "CRITICAL",
+        "resource": {
+          "resource_id": "db-prod-mysql-001",
+          "resource_type": "rds",
+          "name": "prod-mysql-main",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production",
+            "Team": "backend"
+          },
+          "config": {
+            "engine": "mysql",
+            "engine_version": "8.0.35",
+            "instance_class": "db.r6g.large",
+            "publicly_accessible": true,
+            "multi_az": false,
+            "storage_encrypted": true,
+            "backup_retention_period": 0,
+            "vpc_id": "vpc-0abc001",
+            "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+            "port": 3306,
+            "allocated_storage_gb": 200
+          },
+          "created_at": "2025-08-20T09:00:00Z"
+        },
+        "description": "RDS实例 prod-mysql-main (mysql) 开启了公开访问",
+        "details": "数据库端点 prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com 可从互联网直接访问，存在严重安全风险",
+        "detected_at": "2026-05-01T20:53:49.854674"
+      },
+      "root_cause": "RDS实例配置了PubliclyAccessible=true，且所在子网关联了含有公网路由的路由表",
+      "impact_assessment": "数据库端点可从互联网直接访问，面临SQL注入、暴力破解等攻击风险。这是最严重的数据库安全隐患",
+      "risk_score": 100,
+      "related_resources": [
+        "RDS-002",
+        "RDS-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 5,
+          "thought": "分析第2个发现 [RDS-001] RDS实例公开可访问 (严重程度: CRITICAL), 资源: prod-mysql-main。根因: RDS实例配置了PubliclyAccessible=true，且所在子网关联了含有公网路由的路由表",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "RDS-001"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:50.158568"
+        },
+        {
+          "step_number": 6,
+          "thought": "影响评估: 数据库端点可从互联网直接访问，面临SQL注入、暴力破解等攻击风险。这是最严重的数据库安全隐患。风险评分: 100/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:50.208977"
+        },
+        {
+          "step_number": 7,
+          "thought": "关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-002', 'RDS-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:50.259695"
+        }
+      ],
+      "recommendation": "1. 立即设置PubliclyAccessible=false 2. 将RDS迁移到私有子网 3. 通过VPN/堡垒机访问数据库",
+      "analyzed_at": "2026-05-01T20:53:50.310274"
+    },
+    {
+      "analysis_id": "59beec21",
+      "finding": {
+        "finding_id": "a2c24d03",
+        "rule_id": "SG-001",
+        "rule_name": "安全组开放全部入站端口",
+        "severity": "CRITICAL",
+        "resource": {
+          "resource_id": "sg-wide-open-001",
+          "resource_type": "security_group",
+          "name": "wide-open-dev-sg",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "dev"
+          },
+          "config": {
+            "vpc_id": "vpc-0abc001",
+            "description": "Dev security group - TEMP wide open",
+            "inbound_rules": [
+              {
+                "protocol": "-1",
+                "port_range": "All",
+                "source": "0.0.0.0/0"
+              },
+              {
+                "protocol": "tcp",
+                "port_range": "22",
+                "source": "0.0.0.0/0"
+              },
+              {
+                "protocol": "tcp",
+                "port_range": "3389",
+                "source": "0.0.0.0/0"
+              }
+            ],
+            "outbound_rules": [
+              {
+                "protocol": "-1",
+                "port_range": "All",
+                "destination": "0.0.0.0/0"
+              }
+            ],
+            "is_default": false
+          },
+          "created_at": ""
+        },
+        "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的全端口入站",
+        "details": "安全组 sg-wide-open-001 对互联网完全开放，所有端口均可被访问",
+        "detected_at": "2026-05-01T20:53:49.854731"
+      },
+      "root_cause": "安全组入站规则配置了0.0.0.0/0的全端口访问，可能是临时开发配置未清理",
+      "impact_assessment": "所有端口对互联网开放，实例面临各类网络攻击风险，是最严重的网络安全隐患",
+      "risk_score": 100,
+      "related_resources": [
+        "SG-002",
+        "SG-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 8,
+          "thought": "分析第3个发现 [SG-001] 安全组开放全部入站端口 (严重程度: CRITICAL), 资源: wide-open-dev-sg。根因: 安全组入站规则配置了0.0.0.0/0的全端口访问，可能是临时开发配置未清理",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "SG-001"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:50.310325"
+        },
+        {
+          "step_number": 9,
+          "thought": "影响评估: 所有端口对互联网开放，实例面临各类网络攻击风险，是最严重的网络安全隐患。风险评分: 100/100。",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:50.360874"
+        },
+        {
+          "step_number": 10,
+          "thought": "关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-002', 'SG-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:50.411595"
+        }
+      ],
+      "recommendation": "1. 立即删除全开放规则 2. 按应用需求仅开放必要端口 3. 使用安全组引用替代CIDR",
+      "analyzed_at": "2026-05-01T20:53:50.462279"
+    },
+    {
+      "analysis_id": "9928fccf",
+      "finding": {
+        "finding_id": "6b114038",
+        "rule_id": "IAM-002",
+        "rule_name": "IAM用户拥有管理员权限",
+        "severity": "CRITICAL",
+        "resource": {
+          "resource_id": "AIDA1234567890ADMIN",
+          "resource_type": "iam",
+          "name": "admin-user",
+          "region": "global",
+          "tags": {
+            "Department": "IT"
+          },
+          "config": {
+            "user_type": "IAM User",
+            "mfa_enabled": false,
+            "has_console_access": true,
+            "access_keys": [
+              {
+                "key_id": "AKIA...XYZ1",
+                "status": "Active",
+                "last_used": "2026-04-29"
+              }
+            ],
+            "policies": [
+              {
+                "policy_name": "AdministratorAccess",
+                "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+              }
+            ],
+            "groups": [
+              "Administrators"
+            ],
+            "last_login": "2026-04-29T15:30:00Z"
+          },
+          "created_at": "2025-01-10T00:00:00Z"
+        },
+        "description": "IAM用户 admin-user 拥有AdministratorAccess权限",
+        "details": "最小权限原则: 用户不应直接拥有管理员权限",
+        "detected_at": "2026-05-01T20:53:49.854786"
+      },
+      "root_cause": "IAM用户直接附加了AdministratorAccess托管策略，违反最小权限原则",
+      "impact_assessment": "用户拥有账号中所有服务的完全控制权，误操作或账号被劫持将导致灾难性后果",
+      "risk_score": 100,
+      "related_resources": [
+        "IAM-001"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 11,
+          "thought": "分析第4个发现 [IAM-002] IAM用户拥有管理员权限 (严重程度: CRITICAL), 资源: admin-user。根因: IAM用户直接附加了AdministratorAccess托管策略，违反最小权限原则",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "IAM-002"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:50.462364"
+        },
+        {
+          "step_number": 12,
+          "thought": "影响评估: 用户拥有账号中所有服务的完全控制权，误操作或账号被劫持将导致灾难性后果。风险评分: 100/100。",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:50.512979"
+        },
+        {
+          "step_number": 13,
+          "thought": "关联分析: 同一资源 admin-user 还存在其他问题: ['IAM-001']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:50.563901"
+        }
+      ],
+      "recommendation": "1. 移除直接的Admin权限 2. 创建细粒度的自定义策略 3. 使用IAM角色临时提权",
+      "analyzed_at": "2026-05-01T20:53:50.614520"
+    },
+    {
+      "analysis_id": "8f07cc1d",
+      "finding": {
+        "finding_id": "aad44334",
+        "rule_id": "EC2-001",
+        "rule_name": "EC2实例未加密EBS卷",
+        "severity": "HIGH",
+        "resource": {
+          "resource_id": "i-0a1b2c3d4e5f60001",
+          "resource_type": "ec2",
+          "name": "web-server-prod-01",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production",
+            "Team": "backend"
+          },
+          "config": {
+            "instance_type": "t3.medium",
+            "state": "running",
+            "public_ip": "54.199.100.10",
+            "private_ip": "10.0.1.100",
+            "security_groups": [
+              "sg-default-001"
+            ],
+            "iam_instance_profile": null,
+            "ebs_volumes": [
+              {
+                "volume_id": "vol-001",
+                "encrypted": false,
+                "size_gb": 50
+              }
+            ],
+            "vpc_id": "vpc-0abc001",
+            "subnet_id": "subnet-pub-001"
+          },
+          "created_at": "2025-11-15T08:30:00Z"
+        },
+        "description": "EBS卷 vol-001 未启用加密",
+        "details": "实例 web-server-prod-01 的EBS卷 vol-001 (50GB) 未启用加密，存在数据泄露风险",
+        "detected_at": "2026-05-01T20:53:49.854463"
+      },
+      "root_cause": "EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+      "impact_assessment": "存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露",
+      "risk_score": 90,
+      "related_resources": [
+        "EC2-002",
+        "EC2-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 14,
+          "thought": "分析第5个发现 [EC2-001] EC2实例未加密EBS卷 (严重程度: HIGH), 资源: web-server-prod-01。根因: EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "EC2-001"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:50.614574"
+        },
+        {
+          "step_number": 15,
+          "thought": "影响评估: 存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:50.665073"
+        },
+        {
+          "step_number": 16,
+          "thought": "关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-002', 'EC2-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:50.715827"
+        }
+      ],
+      "recommendation": "1. 启用账号级别的EBS默认加密 2. 创建加密快照并用加密快照恢复卷 3. 使用AWS Config规则持续监控",
+      "analyzed_at": "2026-05-01T20:53:50.766456"
+    },
+    {
+      "analysis_id": "6319f270",
+      "finding": {
+        "finding_id": "347ec094",
+        "rule_id": "EC2-001",
+        "rule_name": "EC2实例未加密EBS卷",
+        "severity": "HIGH",
+        "resource": {
+          "resource_id": "i-0a1b2c3d4e5f60003",
+          "resource_type": "ec2",
+          "name": "dev-test-server",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "dev"
+          },
+          "config": {
+            "instance_type": "t3.micro",
+            "state": "running",
+            "public_ip": "54.199.100.20",
+            "private_ip": "10.0.3.10",
+            "security_groups": [
+              "sg-wide-open-001"
+            ],
+            "iam_instance_profile": null,
+            "ebs_volumes": [
+              {
+                "volume_id": "vol-003",
+                "encrypted": false,
+                "size_gb": 20
+              }
+            ],
+            "vpc_id": "vpc-0abc001",
+            "subnet_id": "subnet-pub-002"
+          },
+          "created_at": "2026-01-20T14:00:00Z"
+        },
+        "description": "EBS卷 vol-003 未启用加密",
+        "details": "实例 dev-test-server 的EBS卷 vol-003 (20GB) 未启用加密，存在数据泄露风险",
+        "detected_at": "2026-05-01T20:53:49.854558"
+      },
+      "root_cause": "EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+      "impact_assessment": "存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露",
+      "risk_score": 70,
+      "related_resources": [
+        "EC2-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 17,
+          "thought": "分析第6个发现 [EC2-001] EC2实例未加密EBS卷 (严重程度: HIGH), 资源: dev-test-server。根因: EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "EC2-001"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:50.766530"
+        },
+        {
+          "step_number": 18,
+          "thought": "影响评估: 存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露。风险评分: 70/100。",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:50.817092"
+        },
+        {
+          "step_number": 19,
+          "thought": "关联分析: 同一资源 dev-test-server 还存在其他问题: ['EC2-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:50.867894"
+        }
+      ],
+      "recommendation": "1. 启用账号级别的EBS默认加密 2. 创建加密快照并用加密快照恢复卷 3. 使用AWS Config规则持续监控",
+      "analyzed_at": "2026-05-01T20:53:50.918334"
+    },
+    {
+      "analysis_id": "8a4d7c83",
+      "finding": {
+        "finding_id": "c09b0b31",
+        "rule_id": "S3-003",
+        "rule_name": "S3存储桶未启用服务端加密",
+        "severity": "HIGH",
+        "resource": {
+          "resource_id": "company-public-assets-bucket",
+          "resource_type": "s3",
+          "name": "company-public-assets-bucket",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production"
+          },
+          "config": {
+            "public_access_block": {
+              "block_public_acls": false,
+              "block_public_policy": false,
+              "ignore_public_acls": false,
+              "restrict_public_buckets": false
+            },
+            "versioning": false,
+            "encryption": null,
+            "bucket_policy_public": true,
+            "object_count": 15420,
+            "total_size_gb": 128.5
+          },
+          "created_at": "2025-06-10T05:00:00Z"
+        },
+        "description": "存储桶 company-public-assets-bucket 未启用默认加密",
+        "details": "未加密的存储桶中数据以明文存储",
+        "detected_at": "2026-05-01T20:53:49.854630"
+      },
+      "root_cause": "存储桶未配置默认服务端加密，依赖上传者手动指定加密",
+      "impact_assessment": "未加密的对象以明文存储在S3中，存在数据泄露风险",
+      "risk_score": 90,
+      "related_resources": [
+        "S3-001",
+        "S3-002"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 20,
+          "thought": "分析第7个发现 [S3-003] S3存储桶未启用服务端加密 (严重程度: HIGH), 资源: company-public-assets-bucket。根因: 存储桶未配置默认服务端加密，依赖上传者手动指定加密",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "S3-003"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:50.918406"
+        },
+        {
+          "step_number": 21,
+          "thought": "影响评估: 未加密的对象以明文存储在S3中，存在数据泄露风险。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:50.969172"
+        },
+        {
+          "step_number": 22,
+          "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-002']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:51.020015"
+        }
+      ],
+      "recommendation": "1. 启用S3默认加密(SSE-S3或SSE-KMS) 2. 添加Bucket Policy强制加密上传",
+      "analyzed_at": "2026-05-01T20:53:51.070808"
+    },
+    {
+      "analysis_id": "73ab8708",
+      "finding": {
+        "finding_id": "3cb98a9a",
+        "rule_id": "RDS-003",
+        "rule_name": "RDS实例未启用自动备份",
+        "severity": "HIGH",
+        "resource": {
+          "resource_id": "db-prod-mysql-001",
+          "resource_type": "rds",
+          "name": "prod-mysql-main",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production",
+            "Team": "backend"
+          },
+          "config": {
+            "engine": "mysql",
+            "engine_version": "8.0.35",
+            "instance_class": "db.r6g.large",
+            "publicly_accessible": true,
+            "multi_az": false,
+            "storage_encrypted": true,
+            "backup_retention_period": 0,
+            "vpc_id": "vpc-0abc001",
+            "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+            "port": 3306,
+            "allocated_storage_gb": 200
+          },
+          "created_at": "2025-08-20T09:00:00Z"
+        },
+        "description": "RDS实例 prod-mysql-main 的备份保留期为0天",
+        "details": "未启用自动备份，数据丢失将无法恢复",
+        "detected_at": "2026-05-01T20:53:49.854695"
+      },
+      "root_cause": "RDS实例的备份保留期设置为0天，禁用了自动备份",
+      "impact_assessment": "无法进行时间点恢复，数据丢失将是永久性的",
+      "risk_score": 90,
+      "related_resources": [
+        "RDS-001",
+        "RDS-002"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 23,
+          "thought": "分析第8个发现 [RDS-003] RDS实例未启用自动备份 (严重程度: HIGH), 资源: prod-mysql-main。根因: RDS实例的备份保留期设置为0天，禁用了自动备份",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "RDS-003"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:51.070870"
+        },
+        {
+          "step_number": 24,
+          "thought": "影响评估: 无法进行时间点恢复，数据丢失将是永久性的。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:51.121133"
+        },
+        {
+          "step_number": 25,
+          "thought": "关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-001', 'RDS-002']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:51.171470"
+        }
+      ],
+      "recommendation": "1. 设置备份保留期为7天以上 2. 定期创建手动快照 3. 测试备份恢复流程",
+      "analyzed_at": "2026-05-01T20:53:51.221872"
+    },
+    {
+      "analysis_id": "724c0622",
+      "finding": {
+        "finding_id": "bcaa9e8f",
+        "rule_id": "SG-002",
+        "rule_name": "安全组开放SSH到全网",
+        "severity": "HIGH",
+        "resource": {
+          "resource_id": "sg-wide-open-001",
+          "resource_type": "security_group",
+          "name": "wide-open-dev-sg",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "dev"
+          },
+          "config": {
+            "vpc_id": "vpc-0abc001",
+            "description": "Dev security group - TEMP wide open",
+            "inbound_rules": [
+              {
+                "protocol": "-1",
+                "port_range": "All",
+                "source": "0.0.0.0/0"
+              },
+              {
+                "protocol": "tcp",
+                "port_range": "22",
+                "source": "0.0.0.0/0"
+              },
+              {
+                "protocol": "tcp",
+                "port_range": "3389",
+                "source": "0.0.0.0/0"
+              }
+            ],
+            "outbound_rules": [
+              {
+                "protocol": "-1",
+                "port_range": "All",
+                "destination": "0.0.0.0/0"
+              }
+            ],
+            "is_default": false
+          },
+          "created_at": ""
+        },
+        "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的SSH访问",
+        "details": "SSH端口对互联网开放，容易遭受暴力破解攻击",
+        "detected_at": "2026-05-01T20:53:49.854744"
+      },
+      "root_cause": "SSH端口(22)对0.0.0.0/0开放，缺少IP白名单限制",
+      "impact_assessment": "SSH端口暴露在互联网，面临暴力破解和未授权访问风险",
+      "risk_score": 70,
+      "related_resources": [
+        "SG-001",
+        "SG-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 26,
+          "thought": "分析第9个发现 [SG-002] 安全组开放SSH到全网 (严重程度: HIGH), 资源: wide-open-dev-sg。根因: SSH端口(22)对0.0.0.0/0开放，缺少IP白名单限制",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "SG-002"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:51.221934"
+        },
+        {
+          "step_number": 27,
+          "thought": "影响评估: SSH端口暴露在互联网，面临暴力破解和未授权访问风险。风险评分: 70/100。",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:51.272228"
+        },
+        {
+          "step_number": 28,
+          "thought": "关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-001', 'SG-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:51.322527"
+        }
+      ],
+      "recommendation": "1. 限制SSH来源IP为公司网段 2. 使用SSM Session Manager替代SSH 3. 启用密钥认证禁用密码登录",
+      "analyzed_at": "2026-05-01T20:53:51.372873"
+    },
+    {
+      "analysis_id": "f1a756cf",
+      "finding": {
+        "finding_id": "8050b87f",
+        "rule_id": "SG-003",
+        "rule_name": "安全组开放RDP到全网",
+        "severity": "HIGH",
+        "resource": {
+          "resource_id": "sg-wide-open-001",
+          "resource_type": "security_group",
+          "name": "wide-open-dev-sg",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "dev"
+          },
+          "config": {
+            "vpc_id": "vpc-0abc001",
+            "description": "Dev security group - TEMP wide open",
+            "inbound_rules": [
+              {
+                "protocol": "-1",
+                "port_range": "All",
+                "source": "0.0.0.0/0"
+              },
+              {
+                "protocol": "tcp",
+                "port_range": "22",
+                "source": "0.0.0.0/0"
+              },
+              {
+                "protocol": "tcp",
+                "port_range": "3389",
+                "source": "0.0.0.0/0"
+              }
+            ],
+            "outbound_rules": [
+              {
+                "protocol": "-1",
+                "port_range": "All",
+                "destination": "0.0.0.0/0"
+              }
+            ],
+            "is_default": false
+          },
+          "created_at": ""
+        },
+        "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的RDP访问",
+        "details": "RDP端口对互联网开放，容易遭受暴力破解攻击",
+        "detected_at": "2026-05-01T20:53:49.854754"
+      },
+      "root_cause": "RDP端口(3389)对0.0.0.0/0开放，缺少IP白名单限制",
+      "impact_assessment": "RDP端口暴露在互联网，Windows实例面临暴力破解风险",
+      "risk_score": 70,
+      "related_resources": [
+        "SG-001",
+        "SG-002"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 29,
+          "thought": "分析第10个发现 [SG-003] 安全组开放RDP到全网 (严重程度: HIGH), 资源: wide-open-dev-sg。根因: RDP端口(3389)对0.0.0.0/0开放，缺少IP白名单限制",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "SG-003"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:51.372947"
+        },
+        {
+          "step_number": 30,
+          "thought": "影响评估: RDP端口暴露在互联网，Windows实例面临暴力破解风险。风险评分: 70/100。",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:51.423671"
+        },
+        {
+          "step_number": 31,
+          "thought": "关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-001', 'SG-002']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:51.474056"
+        }
+      ],
+      "recommendation": "1. 限制RDP来源IP 2. 使用VPN接入 3. 启用网络级别认证(NLA)",
+      "analyzed_at": "2026-05-01T20:53:51.524704"
+    },
+    {
+      "analysis_id": "15497510",
+      "finding": {
+        "finding_id": "6c08578c",
+        "rule_id": "IAM-001",
+        "rule_name": "IAM用户未启用MFA",
+        "severity": "HIGH",
+        "resource": {
+          "resource_id": "AIDA1234567890ADMIN",
+          "resource_type": "iam",
+          "name": "admin-user",
+          "region": "global",
+          "tags": {
+            "Department": "IT"
+          },
+          "config": {
+            "user_type": "IAM User",
+            "mfa_enabled": false,
+            "has_console_access": true,
+            "access_keys": [
+              {
+                "key_id": "AKIA...XYZ1",
+                "status": "Active",
+                "last_used": "2026-04-29"
+              }
+            ],
+            "policies": [
+              {
+                "policy_name": "AdministratorAccess",
+                "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+              }
+            ],
+            "groups": [
+              "Administrators"
+            ],
+            "last_login": "2026-04-29T15:30:00Z"
+          },
+          "created_at": "2025-01-10T00:00:00Z"
+        },
+        "description": "IAM用户 admin-user 未启用多因素认证",
+        "details": "用户有控制台访问权限但未启用MFA，账号容易被劫持",
+        "detected_at": "2026-05-01T20:53:49.854775"
+      },
+      "root_cause": "IAM用户创建后未配置多因素认证设备",
+      "impact_assessment": "仅凭密码即可登录控制台，账号容易被钓鱼或暴力破解劫持",
+      "risk_score": 70,
+      "related_resources": [
+        "IAM-002"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 32,
+          "thought": "分析第11个发现 [IAM-001] IAM用户未启用MFA (严重程度: HIGH), 资源: admin-user。根因: IAM用户创建后未配置多因素认证设备",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "IAM-001"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:51.524772"
+        },
+        {
+          "step_number": 33,
+          "thought": "影响评估: 仅凭密码即可登录控制台，账号容易被钓鱼或暴力破解劫持。风险评分: 70/100。",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:51.575096"
+        },
+        {
+          "step_number": 34,
+          "thought": "关联分析: 同一资源 admin-user 还存在其他问题: ['IAM-002']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:51.625414"
+        }
+      ],
+      "recommendation": "1. 强制所有IAM用户启用MFA 2. 使用IAM策略条件键要求MFA 3. 推荐使用硬件MFA设备",
+      "analyzed_at": "2026-05-01T20:53:51.675828"
+    },
+    {
+      "analysis_id": "3562458e",
+      "finding": {
+        "finding_id": "f61d8183",
+        "rule_id": "EC2-002",
+        "rule_name": "EC2实例使用默认安全组",
+        "severity": "MEDIUM",
+        "resource": {
+          "resource_id": "i-0a1b2c3d4e5f60001",
+          "resource_type": "ec2",
+          "name": "web-server-prod-01",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production",
+            "Team": "backend"
+          },
+          "config": {
+            "instance_type": "t3.medium",
+            "state": "running",
+            "public_ip": "54.199.100.10",
+            "private_ip": "10.0.1.100",
+            "security_groups": [
+              "sg-default-001"
+            ],
+            "iam_instance_profile": null,
+            "ebs_volumes": [
+              {
+                "volume_id": "vol-001",
+                "encrypted": false,
+                "size_gb": 50
+              }
+            ],
+            "vpc_id": "vpc-0abc001",
+            "subnet_id": "subnet-pub-001"
+          },
+          "created_at": "2025-11-15T08:30:00Z"
+        },
+        "description": "实例 web-server-prod-01 使用了默认安全组 sg-default-001",
+        "details": "默认安全组规则不够精细，建议创建专用安全组",
+        "detected_at": "2026-05-01T20:53:49.854503"
+      },
+      "root_cause": "实例创建时未指定自定义安全组，自动关联了VPC默认安全组",
+      "impact_assessment": "默认安全组规则可能过于宽松，且被多个资源共享，难以精细化管控",
+      "risk_score": 60,
+      "related_resources": [
+        "EC2-001",
+        "EC2-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 35,
+          "thought": "分析第12个发现 [EC2-002] EC2实例使用默认安全组 (严重程度: MEDIUM), 资源: web-server-prod-01。根因: 实例创建时未指定自定义安全组，自动关联了VPC默认安全组",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "EC2-002"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:51.675879"
+        },
+        {
+          "step_number": 36,
+          "thought": "影响评估: 默认安全组规则可能过于宽松，且被多个资源共享，难以精细化管控。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:51.726312"
+        },
+        {
+          "step_number": 37,
+          "thought": "关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-001', 'EC2-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:51.776984"
+        }
+      ],
+      "recommendation": "1. 为每个应用创建专用安全组 2. 遵循最小权限原则配置入站规则 3. 定期审计安全组关联",
+      "analyzed_at": "2026-05-01T20:53:51.827618"
+    },
+    {
+      "analysis_id": "ad6a4986",
+      "finding": {
+        "finding_id": "eff082d1",
+        "rule_id": "EC2-003",
+        "rule_name": "EC2实例无IAM角色",
+        "severity": "MEDIUM",
+        "resource": {
+          "resource_id": "i-0a1b2c3d4e5f60001",
+          "resource_type": "ec2",
+          "name": "web-server-prod-01",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production",
+            "Team": "backend"
+          },
+          "config": {
+            "instance_type": "t3.medium",
+            "state": "running",
+            "public_ip": "54.199.100.10",
+            "private_ip": "10.0.1.100",
+            "security_groups": [
+              "sg-default-001"
+            ],
+            "iam_instance_profile": null,
+            "ebs_volumes": [
+              {
+                "volume_id": "vol-001",
+                "encrypted": false,
+                "size_gb": 50
+              }
+            ],
+            "vpc_id": "vpc-0abc001",
+            "subnet_id": "subnet-pub-001"
+          },
+          "created_at": "2025-11-15T08:30:00Z"
+        },
+        "description": "实例 web-server-prod-01 未关联IAM实例配置文件",
+        "details": "未关联IAM角色的实例无法安全调用其他AWS服务",
+        "detected_at": "2026-05-01T20:53:49.854521"
+      },
+      "root_cause": "实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+      "impact_assessment": "硬编码凭证容易泄露，且无法自动轮换，增加安全风险",
+      "risk_score": 60,
+      "related_resources": [
+        "EC2-001",
+        "EC2-002"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 38,
+          "thought": "分析第13个发现 [EC2-003] EC2实例无IAM角色 (严重程度: MEDIUM), 资源: web-server-prod-01。根因: 实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "EC2-003"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:51.827663"
+        },
+        {
+          "step_number": 39,
+          "thought": "影响评估: 硬编码凭证容易泄露，且无法自动轮换，增加安全风险。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:51.878064"
+        },
+        {
+          "step_number": 40,
+          "thought": "关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-001', 'EC2-002']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:51.928428"
+        }
+      ],
+      "recommendation": "1. 创建最小权限IAM角色 2. 关联实例配置文件 3. 移除应用中的硬编码凭证",
+      "analyzed_at": "2026-05-01T20:53:51.979042"
+    },
+    {
+      "analysis_id": "a0220632",
+      "finding": {
+        "finding_id": "574a2508",
+        "rule_id": "EC2-003",
+        "rule_name": "EC2实例无IAM角色",
+        "severity": "MEDIUM",
+        "resource": {
+          "resource_id": "i-0a1b2c3d4e5f60003",
+          "resource_type": "ec2",
+          "name": "dev-test-server",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "dev"
+          },
+          "config": {
+            "instance_type": "t3.micro",
+            "state": "running",
+            "public_ip": "54.199.100.20",
+            "private_ip": "10.0.3.10",
+            "security_groups": [
+              "sg-wide-open-001"
+            ],
+            "iam_instance_profile": null,
+            "ebs_volumes": [
+              {
+                "volume_id": "vol-003",
+                "encrypted": false,
+                "size_gb": 20
+              }
+            ],
+            "vpc_id": "vpc-0abc001",
+            "subnet_id": "subnet-pub-002"
+          },
+          "created_at": "2026-01-20T14:00:00Z"
+        },
+        "description": "实例 dev-test-server 未关联IAM实例配置文件",
+        "details": "未关联IAM角色的实例无法安全调用其他AWS服务",
+        "detected_at": "2026-05-01T20:53:49.854574"
+      },
+      "root_cause": "实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+      "impact_assessment": "硬编码凭证容易泄露，且无法自动轮换，增加安全风险",
+      "risk_score": 40,
+      "related_resources": [
+        "EC2-001"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 41,
+          "thought": "分析第14个发现 [EC2-003] EC2实例无IAM角色 (严重程度: MEDIUM), 资源: dev-test-server。根因: 实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "EC2-003"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:51.979239"
+        },
+        {
+          "step_number": 42,
+          "thought": "影响评估: 硬编码凭证容易泄露，且无法自动轮换，增加安全风险。风险评分: 40/100。",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:52.029697"
+        },
+        {
+          "step_number": 43,
+          "thought": "关联分析: 同一资源 dev-test-server 还存在其他问题: ['EC2-001']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:52.080072"
+        }
+      ],
+      "recommendation": "1. 创建最小权限IAM角色 2. 关联实例配置文件 3. 移除应用中的硬编码凭证",
+      "analyzed_at": "2026-05-01T20:53:52.130391"
+    },
+    {
+      "analysis_id": "c5e32daf",
+      "finding": {
+        "finding_id": "02095978",
+        "rule_id": "RDS-002",
+        "rule_name": "RDS实例未启用多可用区",
+        "severity": "MEDIUM",
+        "resource": {
+          "resource_id": "db-prod-mysql-001",
+          "resource_type": "rds",
+          "name": "prod-mysql-main",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production",
+            "Team": "backend"
+          },
+          "config": {
+            "engine": "mysql",
+            "engine_version": "8.0.35",
+            "instance_class": "db.r6g.large",
+            "publicly_accessible": true,
+            "multi_az": false,
+            "storage_encrypted": true,
+            "backup_retention_period": 0,
+            "vpc_id": "vpc-0abc001",
+            "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+            "port": 3306,
+            "allocated_storage_gb": 200
+          },
+          "created_at": "2025-08-20T09:00:00Z"
+        },
+        "description": "RDS实例 prod-mysql-main 未启用MultiAZ",
+        "details": "单可用区部署存在单点故障风险",
+        "detected_at": "2026-05-01T20:53:49.854683"
+      },
+      "root_cause": "RDS实例创建时未启用多可用区部署，当前为单AZ部署",
+      "impact_assessment": "单可用区故障将导致数据库不可用，影响业务连续性",
+      "risk_score": 60,
+      "related_resources": [
+        "RDS-001",
+        "RDS-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 44,
+          "thought": "分析第15个发现 [RDS-002] RDS实例未启用多可用区 (严重程度: MEDIUM), 资源: prod-mysql-main。根因: RDS实例创建时未启用多可用区部署，当前为单AZ部署",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "RDS-002"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:52.130445"
+        },
+        {
+          "step_number": 45,
+          "thought": "影响评估: 单可用区故障将导致数据库不可用，影响业务连续性。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:52.180807"
+        },
+        {
+          "step_number": 46,
+          "thought": "关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-001', 'RDS-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:52.231525"
+        }
+      ],
+      "recommendation": "1. 修改实例启用MultiAZ 2. 评估切换期间的停机影响 3. 配合只读副本提高可用性",
+      "analyzed_at": "2026-05-01T20:53:52.281999"
+    },
+    {
+      "analysis_id": "6607367e",
+      "finding": {
+        "finding_id": "6e1ace30",
+        "rule_id": "S3-002",
+        "rule_name": "S3存储桶未启用版本控制",
+        "severity": "LOW",
+        "resource": {
+          "resource_id": "company-public-assets-bucket",
+          "resource_type": "s3",
+          "name": "company-public-assets-bucket",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production"
+          },
+          "config": {
+            "public_access_block": {
+              "block_public_acls": false,
+              "block_public_policy": false,
+              "ignore_public_acls": false,
+              "restrict_public_buckets": false
+            },
+            "versioning": false,
+            "encryption": null,
+            "bucket_policy_public": true,
+            "object_count": 15420,
+            "total_size_gb": 128.5
+          },
+          "created_at": "2025-06-10T05:00:00Z"
+        },
+        "description": "存储桶 company-public-assets-bucket 未启用版本控制",
+        "details": "未启用版本控制可能导致误删数据无法恢复",
+        "detected_at": "2026-05-01T20:53:49.854621"
+      },
+      "root_cause": "存储桶创建时未启用版本控制功能",
+      "impact_assessment": "对象被覆盖或删除后无法恢复，影响数据完整性",
+      "risk_score": 40,
+      "related_resources": [
+        "S3-001",
+        "S3-003"
+      ],
+      "reasoning_chain": [
+        {
+          "step_number": 47,
+          "thought": "分析第16个发现 [S3-002] S3存储桶未启用版本控制 (严重程度: LOW), 资源: company-public-assets-bucket。根因: 存储桶创建时未启用版本控制功能",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "S3-002"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:52.282071"
+        },
+        {
+          "step_number": 48,
+          "thought": "影响评估: 对象被覆盖或删除后无法恢复，影响数据完整性。风险评分: 40/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:52.332474"
+        },
+        {
+          "step_number": 49,
+          "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:52.382767"
+        }
+      ],
+      "recommendation": "1. 启用存储桶版本控制 2. 配合生命周期策略管理旧版本 3. 启用MFA Delete保护",
+      "analyzed_at": "2026-05-01T20:53:52.433116"
+    },
+    {
+      "analysis_id": "b680fec8",
+      "finding": {
+        "finding_id": "676febcc",
+        "rule_id": "S3-002",
+        "rule_name": "S3存储桶未启用版本控制",
+        "severity": "LOW",
+        "resource": {
+          "resource_id": "company-backup-data",
+          "resource_type": "s3",
+          "name": "company-backup-data",
+          "region": "ap-northeast-1",
+          "tags": {
+            "Environment": "production"
+          },
+          "config": {
+            "public_access_block": {
+              "block_public_acls": true,
+              "block_public_policy": true,
+              "ignore_public_acls": true,
+              "restrict_public_buckets": true
+            },
+            "versioning": false,
+            "encryption": "aws:kms",
+            "bucket_policy_public": false,
+            "object_count": 50200,
+            "total_size_gb": 512.0
+          },
+          "created_at": "2025-04-15T12:00:00Z"
+        },
+        "description": "存储桶 company-backup-data 未启用版本控制",
+        "details": "未启用版本控制可能导致误删数据无法恢复",
+        "detected_at": "2026-05-01T20:53:49.854656"
+      },
+      "root_cause": "存储桶创建时未启用版本控制功能",
+      "impact_assessment": "对象被覆盖或删除后无法恢复，影响数据完整性",
+      "risk_score": 40,
+      "related_resources": [],
+      "reasoning_chain": [
+        {
+          "step_number": 49,
+          "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-003']，问题可能相互关联",
+          "action": "correlate",
+          "action_input": {},
+          "observation": "关联分析完成",
+          "timestamp": "2026-05-01T20:53:52.382767"
+        },
+        {
+          "step_number": 50,
+          "thought": "分析第17个发现 [S3-002] S3存储桶未启用版本控制 (严重程度: LOW), 资源: company-backup-data。根因: 存储桶创建时未启用版本控制功能",
+          "action": "analyze_root_cause",
+          "action_input": {
+            "rule_id": "S3-002"
+          },
+          "observation": "根因分析完成",
+          "timestamp": "2026-05-01T20:53:52.433179"
+        },
+        {
+          "step_number": 51,
+          "thought": "影响评估: 对象被覆盖或删除后无法恢复，影响数据完整性。风险评分: 40/100。⚠️ 生产环境资源，风险升级!",
+          "action": "assess_impact",
+          "action_input": {},
+          "observation": "影响评估完成",
+          "timestamp": "2026-05-01T20:53:52.483918"
+        }
+      ],
+      "recommendation": "1. 启用存储桶版本控制 2. 配合生命周期策略管理旧版本 3. 启用MFA Delete保护",
+      "analyzed_at": "2026-05-01T20:53:52.534223"
+    }
+  ],
+  "remediation_plans": [
+    {
+      "plan_id": "a1195982",
+      "analysis": {
+        "analysis_id": "2dfc2f31",
+        "finding": {
+          "finding_id": "982ae17d",
+          "rule_id": "S3-001",
+          "rule_name": "S3存储桶公开访问",
+          "severity": "CRITICAL",
+          "resource": {
+            "resource_id": "company-public-assets-bucket",
+            "resource_type": "s3",
+            "name": "company-public-assets-bucket",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production"
+            },
+            "config": {
+              "public_access_block": {
+                "block_public_acls": false,
+                "block_public_policy": false,
+                "ignore_public_acls": false,
+                "restrict_public_buckets": false
+              },
+              "versioning": false,
+              "encryption": null,
+              "bucket_policy_public": true,
+              "object_count": 15420,
+              "total_size_gb": 128.5
+            },
+            "created_at": "2025-06-10T05:00:00Z"
+          },
+          "description": "存储桶 company-public-assets-bucket 允许公开访问",
+          "details": "存储桶包含 15420 个对象 (128.5GB)，存在严重数据泄露风险",
+          "detected_at": "2026-05-01T20:53:49.854611"
+        },
+        "root_cause": "存储桶策略允许公共访问，且未启用公共访问阻止功能",
+        "impact_assessment": "存储桶中的所有对象可被互联网上任何人访问，可能导致敏感数据大规模泄露",
+        "risk_score": 100,
+        "related_resources": [
+          "S3-002",
+          "S3-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 2,
+            "thought": "分析第1个发现 [S3-001] S3存储桶公开访问 (严重程度: CRITICAL), 资源: company-public-assets-bucket。根因: 存储桶策略允许公共访问，且未启用公共访问阻止功能",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "S3-001"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:50.006467"
+          },
+          {
+            "step_number": 3,
+            "thought": "影响评估: 存储桶中的所有对象可被互联网上任何人访问，可能导致敏感数据大规模泄露。风险评分: 100/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:50.057217"
+          },
+          {
+            "step_number": 4,
+            "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-002', 'S3-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:50.107868"
+          }
+        ],
+        "recommendation": "1. 立即启用S3公共访问阻止 2. 审计并删除公共Bucket Policy 3. 使用CloudFront分发替代直接公开",
+        "analyzed_at": "2026-05-01T20:53:50.158524"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 修复 S3 存储桶 company-public-assets-bucket 公开访问问题\nResources:\n  S3BucketPublicAccessBlock:\n    Properties:\n      Bucket: company-public-assets-bucket\n      PolicyDocument:\n        Statement:\n        - Action: s3:GetObject\n          Condition:\n            Bool:\n              aws:SecureTransport: 'false'\n          Effect: Deny\n          Principal: '*'\n          Resource: arn:aws:s3:::company-public-assets-bucket/*\n          Sid: DenyPublicAccess\n        Version: '2012-10-17'\n    Type: AWS::S3::BucketPolicy\n",
+      "description": "自动修复: S3存储桶公开访问",
+      "steps": [
+        "部署S3 Bucket Policy拒绝公开访问",
+        "启用S3 Block Public Access",
+        "验证对象不再可公开访问"
+      ],
+      "estimated_risk": "高",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 company-public-assets-bucket 原始配置",
+      "created_at": "2026-05-01T20:53:52.686895"
+    },
+    {
+      "plan_id": "77c10f1f",
+      "analysis": {
+        "analysis_id": "a1cd6b86",
+        "finding": {
+          "finding_id": "808d71e6",
+          "rule_id": "RDS-001",
+          "rule_name": "RDS实例公开可访问",
+          "severity": "CRITICAL",
+          "resource": {
+            "resource_id": "db-prod-mysql-001",
+            "resource_type": "rds",
+            "name": "prod-mysql-main",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production",
+              "Team": "backend"
+            },
+            "config": {
+              "engine": "mysql",
+              "engine_version": "8.0.35",
+              "instance_class": "db.r6g.large",
+              "publicly_accessible": true,
+              "multi_az": false,
+              "storage_encrypted": true,
+              "backup_retention_period": 0,
+              "vpc_id": "vpc-0abc001",
+              "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+              "port": 3306,
+              "allocated_storage_gb": 200
+            },
+            "created_at": "2025-08-20T09:00:00Z"
+          },
+          "description": "RDS实例 prod-mysql-main (mysql) 开启了公开访问",
+          "details": "数据库端点 prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com 可从互联网直接访问，存在严重安全风险",
+          "detected_at": "2026-05-01T20:53:49.854674"
+        },
+        "root_cause": "RDS实例配置了PubliclyAccessible=true，且所在子网关联了含有公网路由的路由表",
+        "impact_assessment": "数据库端点可从互联网直接访问，面临SQL注入、暴力破解等攻击风险。这是最严重的数据库安全隐患",
+        "risk_score": 100,
+        "related_resources": [
+          "RDS-002",
+          "RDS-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 5,
+            "thought": "分析第2个发现 [RDS-001] RDS实例公开可访问 (严重程度: CRITICAL), 资源: prod-mysql-main。根因: RDS实例配置了PubliclyAccessible=true，且所在子网关联了含有公网路由的路由表",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "RDS-001"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:50.158568"
+          },
+          {
+            "step_number": 6,
+            "thought": "影响评估: 数据库端点可从互联网直接访问，面临SQL注入、暴力破解等攻击风险。这是最严重的数据库安全隐患。风险评分: 100/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:50.208977"
+          },
+          {
+            "step_number": 7,
+            "thought": "关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-002', 'RDS-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:50.259695"
+          }
+        ],
+        "recommendation": "1. 立即设置PubliclyAccessible=false 2. 将RDS迁移到私有子网 3. 通过VPN/堡垒机访问数据库",
+        "analyzed_at": "2026-05-01T20:53:50.310274"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 关闭 RDS 实例 prod-mysql-main 的公开访问\nResources:\n  RDSInstance:\n    Properties:\n      DBInstanceIdentifier: db-prod-mysql-001\n      PubliclyAccessible: false\n    Type: AWS::RDS::DBInstance\n",
+      "description": "自动修复: RDS实例公开可访问",
+      "steps": [
+        "创建数据库快照",
+        "修改实例关闭公开访问",
+        "验证私有网络连通性",
+        "更新应用连接配置"
+      ],
+      "estimated_risk": "高",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 db-prod-mysql-001 原始配置",
+      "created_at": "2026-05-01T20:53:52.788814"
+    },
+    {
+      "plan_id": "f9e999d0",
+      "analysis": {
+        "analysis_id": "59beec21",
+        "finding": {
+          "finding_id": "a2c24d03",
+          "rule_id": "SG-001",
+          "rule_name": "安全组开放全部入站端口",
+          "severity": "CRITICAL",
+          "resource": {
+            "resource_id": "sg-wide-open-001",
+            "resource_type": "security_group",
+            "name": "wide-open-dev-sg",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "dev"
+            },
+            "config": {
+              "vpc_id": "vpc-0abc001",
+              "description": "Dev security group - TEMP wide open",
+              "inbound_rules": [
+                {
+                  "protocol": "-1",
+                  "port_range": "All",
+                  "source": "0.0.0.0/0"
+                },
+                {
+                  "protocol": "tcp",
+                  "port_range": "22",
+                  "source": "0.0.0.0/0"
+                },
+                {
+                  "protocol": "tcp",
+                  "port_range": "3389",
+                  "source": "0.0.0.0/0"
+                }
+              ],
+              "outbound_rules": [
+                {
+                  "protocol": "-1",
+                  "port_range": "All",
+                  "destination": "0.0.0.0/0"
+                }
+              ],
+              "is_default": false
+            },
+            "created_at": ""
+          },
+          "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的全端口入站",
+          "details": "安全组 sg-wide-open-001 对互联网完全开放，所有端口均可被访问",
+          "detected_at": "2026-05-01T20:53:49.854731"
+        },
+        "root_cause": "安全组入站规则配置了0.0.0.0/0的全端口访问，可能是临时开发配置未清理",
+        "impact_assessment": "所有端口对互联网开放，实例面临各类网络攻击风险，是最严重的网络安全隐患",
+        "risk_score": 100,
+        "related_resources": [
+          "SG-002",
+          "SG-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 8,
+            "thought": "分析第3个发现 [SG-001] 安全组开放全部入站端口 (严重程度: CRITICAL), 资源: wide-open-dev-sg。根因: 安全组入站规则配置了0.0.0.0/0的全端口访问，可能是临时开发配置未清理",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "SG-001"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:50.310325"
+          },
+          {
+            "step_number": 9,
+            "thought": "影响评估: 所有端口对互联网开放，实例面临各类网络攻击风险，是最严重的网络安全隐患。风险评分: 100/100。",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:50.360874"
+          },
+          {
+            "step_number": 10,
+            "thought": "关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-002', 'SG-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:50.411595"
+          }
+        ],
+        "recommendation": "1. 立即删除全开放规则 2. 按应用需求仅开放必要端口 3. 使用安全组引用替代CIDR",
+        "analyzed_at": "2026-05-01T20:53:50.462279"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 修复安全组 wide-open-dev-sg 全端口开放问题\nResources:\n  SecurityGroupFix:\n    Properties:\n      GroupDescription: 'Fixed: wide-open-dev-sg'\n      SecurityGroupIngress:\n      - CidrIp: 10.0.0.0/16\n        FromPort: 443\n        IpProtocol: tcp\n        ToPort: 443\n      - CidrIp: 10.0.0.0/16\n        FromPort: 80\n        IpProtocol: tcp\n        ToPort: 80\n      VpcId: vpc-0abc001\n    Type: AWS::EC2::SecurityGroup\n",
+      "description": "自动修复: 安全组开放全部入站端口",
+      "steps": [
+        "审计当前使用该安全组的资源",
+        "创建新的限制性安全组",
+        "迁移资源到新安全组",
+        "删除旧的宽松安全组"
+      ],
+      "estimated_risk": "高",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 sg-wide-open-001 原始配置",
+      "created_at": "2026-05-01T20:53:52.891844"
+    },
+    {
+      "plan_id": "fad0d0aa",
+      "analysis": {
+        "analysis_id": "8f07cc1d",
+        "finding": {
+          "finding_id": "aad44334",
+          "rule_id": "EC2-001",
+          "rule_name": "EC2实例未加密EBS卷",
+          "severity": "HIGH",
+          "resource": {
+            "resource_id": "i-0a1b2c3d4e5f60001",
+            "resource_type": "ec2",
+            "name": "web-server-prod-01",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production",
+              "Team": "backend"
+            },
+            "config": {
+              "instance_type": "t3.medium",
+              "state": "running",
+              "public_ip": "54.199.100.10",
+              "private_ip": "10.0.1.100",
+              "security_groups": [
+                "sg-default-001"
+              ],
+              "iam_instance_profile": null,
+              "ebs_volumes": [
+                {
+                  "volume_id": "vol-001",
+                  "encrypted": false,
+                  "size_gb": 50
+                }
+              ],
+              "vpc_id": "vpc-0abc001",
+              "subnet_id": "subnet-pub-001"
+            },
+            "created_at": "2025-11-15T08:30:00Z"
+          },
+          "description": "EBS卷 vol-001 未启用加密",
+          "details": "实例 web-server-prod-01 的EBS卷 vol-001 (50GB) 未启用加密，存在数据泄露风险",
+          "detected_at": "2026-05-01T20:53:49.854463"
+        },
+        "root_cause": "EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+        "impact_assessment": "存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露",
+        "risk_score": 90,
+        "related_resources": [
+          "EC2-002",
+          "EC2-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 14,
+            "thought": "分析第5个发现 [EC2-001] EC2实例未加密EBS卷 (严重程度: HIGH), 资源: web-server-prod-01。根因: EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "EC2-001"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:50.614574"
+          },
+          {
+            "step_number": 15,
+            "thought": "影响评估: 存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:50.665073"
+          },
+          {
+            "step_number": 16,
+            "thought": "关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-002', 'EC2-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:50.715827"
+          }
+        ],
+        "recommendation": "1. 启用账号级别的EBS默认加密 2. 创建加密快照并用加密快照恢复卷 3. 使用AWS Config规则持续监控",
+        "analyzed_at": "2026-05-01T20:53:50.766456"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 为 EC2 实例 web-server-prod-01 的 EBS 卷启用加密\nResources:\n  EBSEncryptionDefault:\n    Properties:\n      AvailabilityZone: ap-northeast-1a\n      Encrypted: true\n      Size: 50\n      Tags:\n      - Key: Name\n        Value: web-server-prod-01-encrypted\n    Type: AWS::EC2::Volume\n",
+      "description": "自动修复: EC2实例未加密EBS卷",
+      "steps": [
+        "创建当前EBS卷的快照",
+        "从快照创建加密卷",
+        "替换实例的EBS卷",
+        "验证数据完整性",
+        "删除旧的未加密卷"
+      ],
+      "estimated_risk": "中",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 i-0a1b2c3d4e5f60001 原始配置",
+      "created_at": "2026-05-01T20:53:52.993753"
+    },
+    {
+      "plan_id": "1a909ff7",
+      "analysis": {
+        "analysis_id": "8a4d7c83",
+        "finding": {
+          "finding_id": "c09b0b31",
+          "rule_id": "S3-003",
+          "rule_name": "S3存储桶未启用服务端加密",
+          "severity": "HIGH",
+          "resource": {
+            "resource_id": "company-public-assets-bucket",
+            "resource_type": "s3",
+            "name": "company-public-assets-bucket",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production"
+            },
+            "config": {
+              "public_access_block": {
+                "block_public_acls": false,
+                "block_public_policy": false,
+                "ignore_public_acls": false,
+                "restrict_public_buckets": false
+              },
+              "versioning": false,
+              "encryption": null,
+              "bucket_policy_public": true,
+              "object_count": 15420,
+              "total_size_gb": 128.5
+            },
+            "created_at": "2025-06-10T05:00:00Z"
+          },
+          "description": "存储桶 company-public-assets-bucket 未启用默认加密",
+          "details": "未加密的存储桶中数据以明文存储",
+          "detected_at": "2026-05-01T20:53:49.854630"
+        },
+        "root_cause": "存储桶未配置默认服务端加密，依赖上传者手动指定加密",
+        "impact_assessment": "未加密的对象以明文存储在S3中，存在数据泄露风险",
+        "risk_score": 90,
+        "related_resources": [
+          "S3-001",
+          "S3-002"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 20,
+            "thought": "分析第7个发现 [S3-003] S3存储桶未启用服务端加密 (严重程度: HIGH), 资源: company-public-assets-bucket。根因: 存储桶未配置默认服务端加密，依赖上传者手动指定加密",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "S3-003"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:50.918406"
+          },
+          {
+            "step_number": 21,
+            "thought": "影响评估: 未加密的对象以明文存储在S3中，存在数据泄露风险。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:50.969172"
+          },
+          {
+            "step_number": 22,
+            "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-002']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:51.020015"
+          }
+        ],
+        "recommendation": "1. 启用S3默认加密(SSE-S3或SSE-KMS) 2. 添加Bucket Policy强制加密上传",
+        "analyzed_at": "2026-05-01T20:53:51.070808"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 为 S3 存储桶 company-public-assets-bucket 启用默认加密\nResources:\n  S3BucketEncryption:\n    Properties:\n      BucketEncryption:\n        ServerSideEncryptionConfiguration:\n        - ServerSideEncryptionByDefault:\n            SSEAlgorithm: AES256\n      BucketName: company-public-assets-bucket\n    Type: AWS::S3::Bucket\n",
+      "description": "自动修复: S3存储桶未启用服务端加密",
+      "steps": [
+        "部署S3默认加密配置",
+        "验证新上传对象自动加密",
+        "考虑对现有对象进行加密"
+      ],
+      "estimated_risk": "中",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 company-public-assets-bucket 原始配置",
+      "created_at": "2026-05-01T20:53:53.096296"
+    },
+    {
+      "plan_id": "763a6eec",
+      "analysis": {
+        "analysis_id": "73ab8708",
+        "finding": {
+          "finding_id": "3cb98a9a",
+          "rule_id": "RDS-003",
+          "rule_name": "RDS实例未启用自动备份",
+          "severity": "HIGH",
+          "resource": {
+            "resource_id": "db-prod-mysql-001",
+            "resource_type": "rds",
+            "name": "prod-mysql-main",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production",
+              "Team": "backend"
+            },
+            "config": {
+              "engine": "mysql",
+              "engine_version": "8.0.35",
+              "instance_class": "db.r6g.large",
+              "publicly_accessible": true,
+              "multi_az": false,
+              "storage_encrypted": true,
+              "backup_retention_period": 0,
+              "vpc_id": "vpc-0abc001",
+              "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+              "port": 3306,
+              "allocated_storage_gb": 200
+            },
+            "created_at": "2025-08-20T09:00:00Z"
+          },
+          "description": "RDS实例 prod-mysql-main 的备份保留期为0天",
+          "details": "未启用自动备份，数据丢失将无法恢复",
+          "detected_at": "2026-05-01T20:53:49.854695"
+        },
+        "root_cause": "RDS实例的备份保留期设置为0天，禁用了自动备份",
+        "impact_assessment": "无法进行时间点恢复，数据丢失将是永久性的",
+        "risk_score": 90,
+        "related_resources": [
+          "RDS-001",
+          "RDS-002"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 23,
+            "thought": "分析第8个发现 [RDS-003] RDS实例未启用自动备份 (严重程度: HIGH), 资源: prod-mysql-main。根因: RDS实例的备份保留期设置为0天，禁用了自动备份",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "RDS-003"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:51.070870"
+          },
+          {
+            "step_number": 24,
+            "thought": "影响评估: 无法进行时间点恢复，数据丢失将是永久性的。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:51.121133"
+          },
+          {
+            "step_number": 25,
+            "thought": "关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-001', 'RDS-002']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:51.171470"
+          }
+        ],
+        "recommendation": "1. 设置备份保留期为7天以上 2. 定期创建手动快照 3. 测试备份恢复流程",
+        "analyzed_at": "2026-05-01T20:53:51.221872"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 为 RDS 实例 prod-mysql-main 启用自动备份\nResources:\n  RDSInstance:\n    Properties:\n      BackupRetentionPeriod: 7\n      DBInstanceIdentifier: db-prod-mysql-001\n      PreferredBackupWindow: 03:00-04:00\n    Type: AWS::RDS::DBInstance\n",
+      "description": "自动修复: RDS实例未启用自动备份",
+      "steps": [
+        "修改实例启用自动备份",
+        "设置备份保留期为7天",
+        "配置备份窗口",
+        "验证备份任务正常运行"
+      ],
+      "estimated_risk": "中",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 db-prod-mysql-001 原始配置",
+      "created_at": "2026-05-01T20:53:53.198349"
+    },
+    {
+      "plan_id": "0448a0d6",
+      "analysis": {
+        "analysis_id": "6319f270",
+        "finding": {
+          "finding_id": "347ec094",
+          "rule_id": "EC2-001",
+          "rule_name": "EC2实例未加密EBS卷",
+          "severity": "HIGH",
+          "resource": {
+            "resource_id": "i-0a1b2c3d4e5f60003",
+            "resource_type": "ec2",
+            "name": "dev-test-server",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "dev"
+            },
+            "config": {
+              "instance_type": "t3.micro",
+              "state": "running",
+              "public_ip": "54.199.100.20",
+              "private_ip": "10.0.3.10",
+              "security_groups": [
+                "sg-wide-open-001"
+              ],
+              "iam_instance_profile": null,
+              "ebs_volumes": [
+                {
+                  "volume_id": "vol-003",
+                  "encrypted": false,
+                  "size_gb": 20
+                }
+              ],
+              "vpc_id": "vpc-0abc001",
+              "subnet_id": "subnet-pub-002"
+            },
+            "created_at": "2026-01-20T14:00:00Z"
+          },
+          "description": "EBS卷 vol-003 未启用加密",
+          "details": "实例 dev-test-server 的EBS卷 vol-003 (20GB) 未启用加密，存在数据泄露风险",
+          "detected_at": "2026-05-01T20:53:49.854558"
+        },
+        "root_cause": "EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+        "impact_assessment": "存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露",
+        "risk_score": 70,
+        "related_resources": [
+          "EC2-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 17,
+            "thought": "分析第6个发现 [EC2-001] EC2实例未加密EBS卷 (严重程度: HIGH), 资源: dev-test-server。根因: EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "EC2-001"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:50.766530"
+          },
+          {
+            "step_number": 18,
+            "thought": "影响评估: 存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露。风险评分: 70/100。",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:50.817092"
+          },
+          {
+            "step_number": 19,
+            "thought": "关联分析: 同一资源 dev-test-server 还存在其他问题: ['EC2-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:50.867894"
+          }
+        ],
+        "recommendation": "1. 启用账号级别的EBS默认加密 2. 创建加密快照并用加密快照恢复卷 3. 使用AWS Config规则持续监控",
+        "analyzed_at": "2026-05-01T20:53:50.918334"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 为 EC2 实例 dev-test-server 的 EBS 卷启用加密\nResources:\n  EBSEncryptionDefault:\n    Properties:\n      AvailabilityZone: ap-northeast-1a\n      Encrypted: true\n      Size: 50\n      Tags:\n      - Key: Name\n        Value: dev-test-server-encrypted\n    Type: AWS::EC2::Volume\n",
+      "description": "自动修复: EC2实例未加密EBS卷",
+      "steps": [
+        "创建当前EBS卷的快照",
+        "从快照创建加密卷",
+        "替换实例的EBS卷",
+        "验证数据完整性",
+        "删除旧的未加密卷"
+      ],
+      "estimated_risk": "中",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 i-0a1b2c3d4e5f60003 原始配置",
+      "created_at": "2026-05-01T20:53:53.300877"
+    },
+    {
+      "plan_id": "87f51e16",
+      "analysis": {
+        "analysis_id": "724c0622",
+        "finding": {
+          "finding_id": "bcaa9e8f",
+          "rule_id": "SG-002",
+          "rule_name": "安全组开放SSH到全网",
+          "severity": "HIGH",
+          "resource": {
+            "resource_id": "sg-wide-open-001",
+            "resource_type": "security_group",
+            "name": "wide-open-dev-sg",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "dev"
+            },
+            "config": {
+              "vpc_id": "vpc-0abc001",
+              "description": "Dev security group - TEMP wide open",
+              "inbound_rules": [
+                {
+                  "protocol": "-1",
+                  "port_range": "All",
+                  "source": "0.0.0.0/0"
+                },
+                {
+                  "protocol": "tcp",
+                  "port_range": "22",
+                  "source": "0.0.0.0/0"
+                },
+                {
+                  "protocol": "tcp",
+                  "port_range": "3389",
+                  "source": "0.0.0.0/0"
+                }
+              ],
+              "outbound_rules": [
+                {
+                  "protocol": "-1",
+                  "port_range": "All",
+                  "destination": "0.0.0.0/0"
+                }
+              ],
+              "is_default": false
+            },
+            "created_at": ""
+          },
+          "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的SSH访问",
+          "details": "SSH端口对互联网开放，容易遭受暴力破解攻击",
+          "detected_at": "2026-05-01T20:53:49.854744"
+        },
+        "root_cause": "SSH端口(22)对0.0.0.0/0开放，缺少IP白名单限制",
+        "impact_assessment": "SSH端口暴露在互联网，面临暴力破解和未授权访问风险",
+        "risk_score": 70,
+        "related_resources": [
+          "SG-001",
+          "SG-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 26,
+            "thought": "分析第9个发现 [SG-002] 安全组开放SSH到全网 (严重程度: HIGH), 资源: wide-open-dev-sg。根因: SSH端口(22)对0.0.0.0/0开放，缺少IP白名单限制",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "SG-002"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:51.221934"
+          },
+          {
+            "step_number": 27,
+            "thought": "影响评估: SSH端口暴露在互联网，面临暴力破解和未授权访问风险。风险评分: 70/100。",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:51.272228"
+          },
+          {
+            "step_number": 28,
+            "thought": "关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-001', 'SG-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:51.322527"
+          }
+        ],
+        "recommendation": "1. 限制SSH来源IP为公司网段 2. 使用SSM Session Manager替代SSH 3. 启用密钥认证禁用密码登录",
+        "analyzed_at": "2026-05-01T20:53:51.372873"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 限制安全组 wide-open-dev-sg 的 SSH 访问来源\nResources:\n  SSHIngressFix:\n    Properties:\n      CidrIp: 10.0.0.0/16\n      Description: 仅允许内网SSH访问\n      FromPort: 22\n      GroupId: sg-wide-open-001\n      IpProtocol: tcp\n      ToPort: 22\n    Type: AWS::EC2::SecurityGroupIngress\n",
+      "description": "自动修复: 安全组开放SSH到全网",
+      "steps": [
+        "删除SSH全网开放规则",
+        "添加限制IP范围的SSH规则",
+        "验证授权用户仍可SSH访问"
+      ],
+      "estimated_risk": "中",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 sg-wide-open-001 原始配置",
+      "created_at": "2026-05-01T20:53:53.402916"
+    },
+    {
+      "plan_id": "7387efcd",
+      "analysis": {
+        "analysis_id": "f1a756cf",
+        "finding": {
+          "finding_id": "8050b87f",
+          "rule_id": "SG-003",
+          "rule_name": "安全组开放RDP到全网",
+          "severity": "HIGH",
+          "resource": {
+            "resource_id": "sg-wide-open-001",
+            "resource_type": "security_group",
+            "name": "wide-open-dev-sg",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "dev"
+            },
+            "config": {
+              "vpc_id": "vpc-0abc001",
+              "description": "Dev security group - TEMP wide open",
+              "inbound_rules": [
+                {
+                  "protocol": "-1",
+                  "port_range": "All",
+                  "source": "0.0.0.0/0"
+                },
+                {
+                  "protocol": "tcp",
+                  "port_range": "22",
+                  "source": "0.0.0.0/0"
+                },
+                {
+                  "protocol": "tcp",
+                  "port_range": "3389",
+                  "source": "0.0.0.0/0"
+                }
+              ],
+              "outbound_rules": [
+                {
+                  "protocol": "-1",
+                  "port_range": "All",
+                  "destination": "0.0.0.0/0"
+                }
+              ],
+              "is_default": false
+            },
+            "created_at": ""
+          },
+          "description": "安全组 wide-open-dev-sg 允许来自0.0.0.0/0的RDP访问",
+          "details": "RDP端口对互联网开放，容易遭受暴力破解攻击",
+          "detected_at": "2026-05-01T20:53:49.854754"
+        },
+        "root_cause": "RDP端口(3389)对0.0.0.0/0开放，缺少IP白名单限制",
+        "impact_assessment": "RDP端口暴露在互联网，Windows实例面临暴力破解风险",
+        "risk_score": 70,
+        "related_resources": [
+          "SG-001",
+          "SG-002"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 29,
+            "thought": "分析第10个发现 [SG-003] 安全组开放RDP到全网 (严重程度: HIGH), 资源: wide-open-dev-sg。根因: RDP端口(3389)对0.0.0.0/0开放，缺少IP白名单限制",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "SG-003"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:51.372947"
+          },
+          {
+            "step_number": 30,
+            "thought": "影响评估: RDP端口暴露在互联网，Windows实例面临暴力破解风险。风险评分: 70/100。",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:51.423671"
+          },
+          {
+            "step_number": 31,
+            "thought": "关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-001', 'SG-002']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:51.474056"
+          }
+        ],
+        "recommendation": "1. 限制RDP来源IP 2. 使用VPN接入 3. 启用网络级别认证(NLA)",
+        "analyzed_at": "2026-05-01T20:53:51.524704"
+      },
+      "status": "generated",
+      "cfn_template": "AWSTemplateFormatVersion: '2010-09-09'\nDescription: 限制安全组 wide-open-dev-sg 的 RDP 访问来源\nResources:\n  RDPIngressFix:\n    Properties:\n      CidrIp: 10.0.0.0/16\n      Description: 仅允许内网RDP访问\n      FromPort: 3389\n      GroupId: sg-wide-open-001\n      IpProtocol: tcp\n      ToPort: 3389\n    Type: AWS::EC2::SecurityGroupIngress\n",
+      "description": "自动修复: 安全组开放RDP到全网",
+      "steps": [
+        "删除RDP全网开放规则",
+        "添加限制IP范围的RDP规则",
+        "验证授权用户仍可RDP访问"
+      ],
+      "estimated_risk": "中",
+      "rollback_plan": "删除CloudFormation Stack回滚变更，恢复资源 sg-wide-open-001 原始配置",
+      "created_at": "2026-05-01T20:53:53.504539"
+    },
+    {
+      "plan_id": "2f07dd19",
+      "analysis": {
+        "analysis_id": "9928fccf",
+        "finding": {
+          "finding_id": "6b114038",
+          "rule_id": "IAM-002",
+          "rule_name": "IAM用户拥有管理员权限",
+          "severity": "CRITICAL",
+          "resource": {
+            "resource_id": "AIDA1234567890ADMIN",
+            "resource_type": "iam",
+            "name": "admin-user",
+            "region": "global",
+            "tags": {
+              "Department": "IT"
+            },
+            "config": {
+              "user_type": "IAM User",
+              "mfa_enabled": false,
+              "has_console_access": true,
+              "access_keys": [
+                {
+                  "key_id": "AKIA...XYZ1",
+                  "status": "Active",
+                  "last_used": "2026-04-29"
+                }
+              ],
+              "policies": [
+                {
+                  "policy_name": "AdministratorAccess",
+                  "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+                }
+              ],
+              "groups": [
+                "Administrators"
+              ],
+              "last_login": "2026-04-29T15:30:00Z"
+            },
+            "created_at": "2025-01-10T00:00:00Z"
+          },
+          "description": "IAM用户 admin-user 拥有AdministratorAccess权限",
+          "details": "最小权限原则: 用户不应直接拥有管理员权限",
+          "detected_at": "2026-05-01T20:53:49.854786"
+        },
+        "root_cause": "IAM用户直接附加了AdministratorAccess托管策略，违反最小权限原则",
+        "impact_assessment": "用户拥有账号中所有服务的完全控制权，误操作或账号被劫持将导致灾难性后果",
+        "risk_score": 100,
+        "related_resources": [
+          "IAM-001"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 11,
+            "thought": "分析第4个发现 [IAM-002] IAM用户拥有管理员权限 (严重程度: CRITICAL), 资源: admin-user。根因: IAM用户直接附加了AdministratorAccess托管策略，违反最小权限原则",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "IAM-002"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:50.462364"
+          },
+          {
+            "step_number": 12,
+            "thought": "影响评估: 用户拥有账号中所有服务的完全控制权，误操作或账号被劫持将导致灾难性后果。风险评分: 100/100。",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:50.512979"
+          },
+          {
+            "step_number": 13,
+            "thought": "关联分析: 同一资源 admin-user 还存在其他问题: ['IAM-001']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:50.563901"
+          }
+        ],
+        "recommendation": "1. 移除直接的Admin权限 2. 创建细粒度的自定义策略 3. 使用IAM角色临时提权",
+        "analyzed_at": "2026-05-01T20:53:50.614520"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: IAM用户拥有管理员权限",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504570"
+    },
+    {
+      "plan_id": "b213a217",
+      "analysis": {
+        "analysis_id": "15497510",
+        "finding": {
+          "finding_id": "6c08578c",
+          "rule_id": "IAM-001",
+          "rule_name": "IAM用户未启用MFA",
+          "severity": "HIGH",
+          "resource": {
+            "resource_id": "AIDA1234567890ADMIN",
+            "resource_type": "iam",
+            "name": "admin-user",
+            "region": "global",
+            "tags": {
+              "Department": "IT"
+            },
+            "config": {
+              "user_type": "IAM User",
+              "mfa_enabled": false,
+              "has_console_access": true,
+              "access_keys": [
+                {
+                  "key_id": "AKIA...XYZ1",
+                  "status": "Active",
+                  "last_used": "2026-04-29"
+                }
+              ],
+              "policies": [
+                {
+                  "policy_name": "AdministratorAccess",
+                  "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+                }
+              ],
+              "groups": [
+                "Administrators"
+              ],
+              "last_login": "2026-04-29T15:30:00Z"
+            },
+            "created_at": "2025-01-10T00:00:00Z"
+          },
+          "description": "IAM用户 admin-user 未启用多因素认证",
+          "details": "用户有控制台访问权限但未启用MFA，账号容易被劫持",
+          "detected_at": "2026-05-01T20:53:49.854775"
+        },
+        "root_cause": "IAM用户创建后未配置多因素认证设备",
+        "impact_assessment": "仅凭密码即可登录控制台，账号容易被钓鱼或暴力破解劫持",
+        "risk_score": 70,
+        "related_resources": [
+          "IAM-002"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 32,
+            "thought": "分析第11个发现 [IAM-001] IAM用户未启用MFA (严重程度: HIGH), 资源: admin-user。根因: IAM用户创建后未配置多因素认证设备",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "IAM-001"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:51.524772"
+          },
+          {
+            "step_number": 33,
+            "thought": "影响评估: 仅凭密码即可登录控制台，账号容易被钓鱼或暴力破解劫持。风险评分: 70/100。",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:51.575096"
+          },
+          {
+            "step_number": 34,
+            "thought": "关联分析: 同一资源 admin-user 还存在其他问题: ['IAM-002']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:51.625414"
+          }
+        ],
+        "recommendation": "1. 强制所有IAM用户启用MFA 2. 使用IAM策略条件键要求MFA 3. 推荐使用硬件MFA设备",
+        "analyzed_at": "2026-05-01T20:53:51.675828"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: IAM用户未启用MFA",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504586"
+    },
+    {
+      "plan_id": "0b748811",
+      "analysis": {
+        "analysis_id": "3562458e",
+        "finding": {
+          "finding_id": "f61d8183",
+          "rule_id": "EC2-002",
+          "rule_name": "EC2实例使用默认安全组",
+          "severity": "MEDIUM",
+          "resource": {
+            "resource_id": "i-0a1b2c3d4e5f60001",
+            "resource_type": "ec2",
+            "name": "web-server-prod-01",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production",
+              "Team": "backend"
+            },
+            "config": {
+              "instance_type": "t3.medium",
+              "state": "running",
+              "public_ip": "54.199.100.10",
+              "private_ip": "10.0.1.100",
+              "security_groups": [
+                "sg-default-001"
+              ],
+              "iam_instance_profile": null,
+              "ebs_volumes": [
+                {
+                  "volume_id": "vol-001",
+                  "encrypted": false,
+                  "size_gb": 50
+                }
+              ],
+              "vpc_id": "vpc-0abc001",
+              "subnet_id": "subnet-pub-001"
+            },
+            "created_at": "2025-11-15T08:30:00Z"
+          },
+          "description": "实例 web-server-prod-01 使用了默认安全组 sg-default-001",
+          "details": "默认安全组规则不够精细，建议创建专用安全组",
+          "detected_at": "2026-05-01T20:53:49.854503"
+        },
+        "root_cause": "实例创建时未指定自定义安全组，自动关联了VPC默认安全组",
+        "impact_assessment": "默认安全组规则可能过于宽松，且被多个资源共享，难以精细化管控",
+        "risk_score": 60,
+        "related_resources": [
+          "EC2-001",
+          "EC2-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 35,
+            "thought": "分析第12个发现 [EC2-002] EC2实例使用默认安全组 (严重程度: MEDIUM), 资源: web-server-prod-01。根因: 实例创建时未指定自定义安全组，自动关联了VPC默认安全组",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "EC2-002"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:51.675879"
+          },
+          {
+            "step_number": 36,
+            "thought": "影响评估: 默认安全组规则可能过于宽松，且被多个资源共享，难以精细化管控。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:51.726312"
+          },
+          {
+            "step_number": 37,
+            "thought": "关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-001', 'EC2-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:51.776984"
+          }
+        ],
+        "recommendation": "1. 为每个应用创建专用安全组 2. 遵循最小权限原则配置入站规则 3. 定期审计安全组关联",
+        "analyzed_at": "2026-05-01T20:53:51.827618"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: EC2实例使用默认安全组",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504597"
+    },
+    {
+      "plan_id": "ee1e310d",
+      "analysis": {
+        "analysis_id": "ad6a4986",
+        "finding": {
+          "finding_id": "eff082d1",
+          "rule_id": "EC2-003",
+          "rule_name": "EC2实例无IAM角色",
+          "severity": "MEDIUM",
+          "resource": {
+            "resource_id": "i-0a1b2c3d4e5f60001",
+            "resource_type": "ec2",
+            "name": "web-server-prod-01",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production",
+              "Team": "backend"
+            },
+            "config": {
+              "instance_type": "t3.medium",
+              "state": "running",
+              "public_ip": "54.199.100.10",
+              "private_ip": "10.0.1.100",
+              "security_groups": [
+                "sg-default-001"
+              ],
+              "iam_instance_profile": null,
+              "ebs_volumes": [
+                {
+                  "volume_id": "vol-001",
+                  "encrypted": false,
+                  "size_gb": 50
+                }
+              ],
+              "vpc_id": "vpc-0abc001",
+              "subnet_id": "subnet-pub-001"
+            },
+            "created_at": "2025-11-15T08:30:00Z"
+          },
+          "description": "实例 web-server-prod-01 未关联IAM实例配置文件",
+          "details": "未关联IAM角色的实例无法安全调用其他AWS服务",
+          "detected_at": "2026-05-01T20:53:49.854521"
+        },
+        "root_cause": "实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+        "impact_assessment": "硬编码凭证容易泄露，且无法自动轮换，增加安全风险",
+        "risk_score": 60,
+        "related_resources": [
+          "EC2-001",
+          "EC2-002"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 38,
+            "thought": "分析第13个发现 [EC2-003] EC2实例无IAM角色 (严重程度: MEDIUM), 资源: web-server-prod-01。根因: 实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "EC2-003"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:51.827663"
+          },
+          {
+            "step_number": 39,
+            "thought": "影响评估: 硬编码凭证容易泄露，且无法自动轮换，增加安全风险。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:51.878064"
+          },
+          {
+            "step_number": 40,
+            "thought": "关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-001', 'EC2-002']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:51.928428"
+          }
+        ],
+        "recommendation": "1. 创建最小权限IAM角色 2. 关联实例配置文件 3. 移除应用中的硬编码凭证",
+        "analyzed_at": "2026-05-01T20:53:51.979042"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: EC2实例无IAM角色",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504605"
+    },
+    {
+      "plan_id": "79680737",
+      "analysis": {
+        "analysis_id": "a0220632",
+        "finding": {
+          "finding_id": "574a2508",
+          "rule_id": "EC2-003",
+          "rule_name": "EC2实例无IAM角色",
+          "severity": "MEDIUM",
+          "resource": {
+            "resource_id": "i-0a1b2c3d4e5f60003",
+            "resource_type": "ec2",
+            "name": "dev-test-server",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "dev"
+            },
+            "config": {
+              "instance_type": "t3.micro",
+              "state": "running",
+              "public_ip": "54.199.100.20",
+              "private_ip": "10.0.3.10",
+              "security_groups": [
+                "sg-wide-open-001"
+              ],
+              "iam_instance_profile": null,
+              "ebs_volumes": [
+                {
+                  "volume_id": "vol-003",
+                  "encrypted": false,
+                  "size_gb": 20
+                }
+              ],
+              "vpc_id": "vpc-0abc001",
+              "subnet_id": "subnet-pub-002"
+            },
+            "created_at": "2026-01-20T14:00:00Z"
+          },
+          "description": "实例 dev-test-server 未关联IAM实例配置文件",
+          "details": "未关联IAM角色的实例无法安全调用其他AWS服务",
+          "detected_at": "2026-05-01T20:53:49.854574"
+        },
+        "root_cause": "实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+        "impact_assessment": "硬编码凭证容易泄露，且无法自动轮换，增加安全风险",
+        "risk_score": 40,
+        "related_resources": [
+          "EC2-001"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 41,
+            "thought": "分析第14个发现 [EC2-003] EC2实例无IAM角色 (严重程度: MEDIUM), 资源: dev-test-server。根因: 实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "EC2-003"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:51.979239"
+          },
+          {
+            "step_number": 42,
+            "thought": "影响评估: 硬编码凭证容易泄露，且无法自动轮换，增加安全风险。风险评分: 40/100。",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:52.029697"
+          },
+          {
+            "step_number": 43,
+            "thought": "关联分析: 同一资源 dev-test-server 还存在其他问题: ['EC2-001']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:52.080072"
+          }
+        ],
+        "recommendation": "1. 创建最小权限IAM角色 2. 关联实例配置文件 3. 移除应用中的硬编码凭证",
+        "analyzed_at": "2026-05-01T20:53:52.130391"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: EC2实例无IAM角色",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504612"
+    },
+    {
+      "plan_id": "71584e5c",
+      "analysis": {
+        "analysis_id": "c5e32daf",
+        "finding": {
+          "finding_id": "02095978",
+          "rule_id": "RDS-002",
+          "rule_name": "RDS实例未启用多可用区",
+          "severity": "MEDIUM",
+          "resource": {
+            "resource_id": "db-prod-mysql-001",
+            "resource_type": "rds",
+            "name": "prod-mysql-main",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production",
+              "Team": "backend"
+            },
+            "config": {
+              "engine": "mysql",
+              "engine_version": "8.0.35",
+              "instance_class": "db.r6g.large",
+              "publicly_accessible": true,
+              "multi_az": false,
+              "storage_encrypted": true,
+              "backup_retention_period": 0,
+              "vpc_id": "vpc-0abc001",
+              "endpoint": "prod-mysql-main.xxxx.ap-northeast-1.rds.amazonaws.com",
+              "port": 3306,
+              "allocated_storage_gb": 200
+            },
+            "created_at": "2025-08-20T09:00:00Z"
+          },
+          "description": "RDS实例 prod-mysql-main 未启用MultiAZ",
+          "details": "单可用区部署存在单点故障风险",
+          "detected_at": "2026-05-01T20:53:49.854683"
+        },
+        "root_cause": "RDS实例创建时未启用多可用区部署，当前为单AZ部署",
+        "impact_assessment": "单可用区故障将导致数据库不可用，影响业务连续性",
+        "risk_score": 60,
+        "related_resources": [
+          "RDS-001",
+          "RDS-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 44,
+            "thought": "分析第15个发现 [RDS-002] RDS实例未启用多可用区 (严重程度: MEDIUM), 资源: prod-mysql-main。根因: RDS实例创建时未启用多可用区部署，当前为单AZ部署",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "RDS-002"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:52.130445"
+          },
+          {
+            "step_number": 45,
+            "thought": "影响评估: 单可用区故障将导致数据库不可用，影响业务连续性。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:52.180807"
+          },
+          {
+            "step_number": 46,
+            "thought": "关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-001', 'RDS-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:52.231525"
+          }
+        ],
+        "recommendation": "1. 修改实例启用MultiAZ 2. 评估切换期间的停机影响 3. 配合只读副本提高可用性",
+        "analyzed_at": "2026-05-01T20:53:52.281999"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: RDS实例未启用多可用区",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504618"
+    },
+    {
+      "plan_id": "c5ee432d",
+      "analysis": {
+        "analysis_id": "6607367e",
+        "finding": {
+          "finding_id": "6e1ace30",
+          "rule_id": "S3-002",
+          "rule_name": "S3存储桶未启用版本控制",
+          "severity": "LOW",
+          "resource": {
+            "resource_id": "company-public-assets-bucket",
+            "resource_type": "s3",
+            "name": "company-public-assets-bucket",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production"
+            },
+            "config": {
+              "public_access_block": {
+                "block_public_acls": false,
+                "block_public_policy": false,
+                "ignore_public_acls": false,
+                "restrict_public_buckets": false
+              },
+              "versioning": false,
+              "encryption": null,
+              "bucket_policy_public": true,
+              "object_count": 15420,
+              "total_size_gb": 128.5
+            },
+            "created_at": "2025-06-10T05:00:00Z"
+          },
+          "description": "存储桶 company-public-assets-bucket 未启用版本控制",
+          "details": "未启用版本控制可能导致误删数据无法恢复",
+          "detected_at": "2026-05-01T20:53:49.854621"
+        },
+        "root_cause": "存储桶创建时未启用版本控制功能",
+        "impact_assessment": "对象被覆盖或删除后无法恢复，影响数据完整性",
+        "risk_score": 40,
+        "related_resources": [
+          "S3-001",
+          "S3-003"
+        ],
+        "reasoning_chain": [
+          {
+            "step_number": 47,
+            "thought": "分析第16个发现 [S3-002] S3存储桶未启用版本控制 (严重程度: LOW), 资源: company-public-assets-bucket。根因: 存储桶创建时未启用版本控制功能",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "S3-002"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:52.282071"
+          },
+          {
+            "step_number": 48,
+            "thought": "影响评估: 对象被覆盖或删除后无法恢复，影响数据完整性。风险评分: 40/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:52.332474"
+          },
+          {
+            "step_number": 49,
+            "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:52.382767"
+          }
+        ],
+        "recommendation": "1. 启用存储桶版本控制 2. 配合生命周期策略管理旧版本 3. 启用MFA Delete保护",
+        "analyzed_at": "2026-05-01T20:53:52.433116"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: S3存储桶未启用版本控制",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504626"
+    },
+    {
+      "plan_id": "fddf29fb",
+      "analysis": {
+        "analysis_id": "b680fec8",
+        "finding": {
+          "finding_id": "676febcc",
+          "rule_id": "S3-002",
+          "rule_name": "S3存储桶未启用版本控制",
+          "severity": "LOW",
+          "resource": {
+            "resource_id": "company-backup-data",
+            "resource_type": "s3",
+            "name": "company-backup-data",
+            "region": "ap-northeast-1",
+            "tags": {
+              "Environment": "production"
+            },
+            "config": {
+              "public_access_block": {
+                "block_public_acls": true,
+                "block_public_policy": true,
+                "ignore_public_acls": true,
+                "restrict_public_buckets": true
+              },
+              "versioning": false,
+              "encryption": "aws:kms",
+              "bucket_policy_public": false,
+              "object_count": 50200,
+              "total_size_gb": 512.0
+            },
+            "created_at": "2025-04-15T12:00:00Z"
+          },
+          "description": "存储桶 company-backup-data 未启用版本控制",
+          "details": "未启用版本控制可能导致误删数据无法恢复",
+          "detected_at": "2026-05-01T20:53:49.854656"
+        },
+        "root_cause": "存储桶创建时未启用版本控制功能",
+        "impact_assessment": "对象被覆盖或删除后无法恢复，影响数据完整性",
+        "risk_score": 40,
+        "related_resources": [],
+        "reasoning_chain": [
+          {
+            "step_number": 49,
+            "thought": "关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-003']，问题可能相互关联",
+            "action": "correlate",
+            "action_input": {},
+            "observation": "关联分析完成",
+            "timestamp": "2026-05-01T20:53:52.382767"
+          },
+          {
+            "step_number": 50,
+            "thought": "分析第17个发现 [S3-002] S3存储桶未启用版本控制 (严重程度: LOW), 资源: company-backup-data。根因: 存储桶创建时未启用版本控制功能",
+            "action": "analyze_root_cause",
+            "action_input": {
+              "rule_id": "S3-002"
+            },
+            "observation": "根因分析完成",
+            "timestamp": "2026-05-01T20:53:52.433179"
+          },
+          {
+            "step_number": 51,
+            "thought": "影响评估: 对象被覆盖或删除后无法恢复，影响数据完整性。风险评分: 40/100。⚠️ 生产环境资源，风险升级!",
+            "action": "assess_impact",
+            "action_input": {},
+            "observation": "影响评估完成",
+            "timestamp": "2026-05-01T20:53:52.483918"
+          }
+        ],
+        "recommendation": "1. 启用存储桶版本控制 2. 配合生命周期策略管理旧版本 3. 启用MFA Delete保护",
+        "analyzed_at": "2026-05-01T20:53:52.534223"
+      },
+      "status": "pending",
+      "cfn_template": "",
+      "description": "需手动修复: S3存储桶未启用版本控制",
+      "steps": [
+        "人工评估修复方案",
+        "在测试环境验证",
+        "安排变更窗口执行"
+      ],
+      "estimated_risk": "需人工评估",
+      "rollback_plan": "根据具体修复操作制定回滚方案",
+      "created_at": "2026-05-01T20:53:53.504633"
+    }
+  ],
+  "total_duration_seconds": 4.0,
+  "agent_logs": [
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 1] 开始全面扫描AWS环境中的所有资源，包括EC2、S3、RDS、安全组和IAM用户",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 1] 执行: scan_resources",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 1] 扫描到 14 个资源",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 2] 对 EC2 类型资源进行深度配置扫描",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 2] 执行: scan_resources",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 2] 扫描到 3 个资源",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 3] 对 S3 类型资源进行深度配置扫描",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 3] 执行: scan_resources",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 3] 扫描到 3 个资源",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 4] 对 RDS 类型资源进行深度配置扫描",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 4] 执行: scan_resources",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 4] 扫描到 2 个资源",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 5] 对 SECURITY_GROUP 类型资源进行深度配置扫描",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 5] 执行: scan_resources",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 5] 扫描到 3 个资源",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 6] 对 IAM 类型资源进行深度配置扫描",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 6] 执行: scan_resources",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 6] 扫描到 3 个资源",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 7] 对所有扫描到的资源执行安全规则检查，包括加密、公开访问、权限等维度",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 7] 执行: check_security",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 7] 发现 17 个安全问题",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "THOUGHT",
+      "message": "[Step 8] 巡检完成。共扫描 3 个资源，发现 17 个安全问题。其中 CRITICAL: 4, HIGH: 7, MEDIUM: 4, LOW: 2",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "ACTION",
+      "message": "[Step 8] 执行: scan_resources",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "InspectorAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 8] 扫描到 14 个资源",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 1] 收到 17 个安全发现，开始按严重程度排序并进行根因分析。优先处理 CRITICAL 和 HIGH 级别问题",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 1] 执行: sort_findings",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 1] 未知工具: sort_findings",
+      "timestamp": "2026-05-01T20:53:49"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "TOOL_REGISTERED",
+      "message": "注册工具: sort_findings - ",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "TOOL_REGISTERED",
+      "message": "注册工具: analyze_root_cause - ",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "TOOL_REGISTERED",
+      "message": "注册工具: assess_impact - ",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "TOOL_REGISTERED",
+      "message": "注册工具: correlate - ",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 2] 分析第1个发现 [S3-001] S3存储桶公开访问 (严重程度: CRITICAL), 资源: company-public-assets-bucket。根因: 存储桶策略允许公共访问，且未启用公共访问阻止功能",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 2] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 2] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 3] 影响评估: 存储桶中的所有对象可被互联网上任何人访问，可能导致敏感数据大规模泄露。风险评分: 100/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 3] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 3] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 4] 关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-002', 'S3-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 4] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 4] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 5] 分析第2个发现 [RDS-001] RDS实例公开可访问 (严重程度: CRITICAL), 资源: prod-mysql-main。根因: RDS实例配置了PubliclyAccessible=true，且所在子网关联了含有公网路由的路由表",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 5] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 5] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 6] 影响评估: 数据库端点可从互联网直接访问，面临SQL注入、暴力破解等攻击风险。这是最严重的数据库安全隐患。风险评分: 100/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 6] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 6] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 7] 关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-002', 'RDS-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 7] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 7] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 8] 分析第3个发现 [SG-001] 安全组开放全部入站端口 (严重程度: CRITICAL), 资源: wide-open-dev-sg。根因: 安全组入站规则配置了0.0.0.0/0的全端口访问，可能是临时开发配置未清理",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 8] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 8] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 9] 影响评估: 所有端口对互联网开放，实例面临各类网络攻击风险，是最严重的网络安全隐患。风险评分: 100/100。",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 9] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 9] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 10] 关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-002', 'SG-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 10] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 10] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 11] 分析第4个发现 [IAM-002] IAM用户拥有管理员权限 (严重程度: CRITICAL), 资源: admin-user。根因: IAM用户直接附加了AdministratorAccess托管策略，违反最小权限原则",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 11] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 11] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 12] 影响评估: 用户拥有账号中所有服务的完全控制权，误操作或账号被劫持将导致灾难性后果。风险评分: 100/100。",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 12] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 12] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 13] 关联分析: 同一资源 admin-user 还存在其他问题: ['IAM-001']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 13] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 13] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 14] 分析第5个发现 [EC2-001] EC2实例未加密EBS卷 (严重程度: HIGH), 资源: web-server-prod-01。根因: EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 14] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 14] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 15] 影响评估: 存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 15] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 15] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 16] 关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-002', 'EC2-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 16] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 16] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 17] 分析第6个发现 [EC2-001] EC2实例未加密EBS卷 (严重程度: HIGH), 资源: dev-test-server。根因: EBS卷在创建时未指定加密参数，且账号未启用EBS默认加密",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 17] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 17] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 18] 影响评估: 存储在EBS卷中的数据以明文形式存储，如果卷被快照或共享，数据可能泄露。风险评分: 70/100。",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 18] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 18] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 19] 关联分析: 同一资源 dev-test-server 还存在其他问题: ['EC2-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 19] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 19] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 20] 分析第7个发现 [S3-003] S3存储桶未启用服务端加密 (严重程度: HIGH), 资源: company-public-assets-bucket。根因: 存储桶未配置默认服务端加密，依赖上传者手动指定加密",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 20] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 20] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 21] 影响评估: 未加密的对象以明文存储在S3中，存在数据泄露风险。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 21] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 21] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:50"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 22] 关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-002']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 22] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 22] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 23] 分析第8个发现 [RDS-003] RDS实例未启用自动备份 (严重程度: HIGH), 资源: prod-mysql-main。根因: RDS实例的备份保留期设置为0天，禁用了自动备份",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 23] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 23] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 24] 影响评估: 无法进行时间点恢复，数据丢失将是永久性的。风险评分: 90/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 24] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 24] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 25] 关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-001', 'RDS-002']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 25] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 25] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 26] 分析第9个发现 [SG-002] 安全组开放SSH到全网 (严重程度: HIGH), 资源: wide-open-dev-sg。根因: SSH端口(22)对0.0.0.0/0开放，缺少IP白名单限制",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 26] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 26] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 27] 影响评估: SSH端口暴露在互联网，面临暴力破解和未授权访问风险。风险评分: 70/100。",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 27] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 27] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 28] 关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-001', 'SG-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 28] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 28] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 29] 分析第10个发现 [SG-003] 安全组开放RDP到全网 (严重程度: HIGH), 资源: wide-open-dev-sg。根因: RDP端口(3389)对0.0.0.0/0开放，缺少IP白名单限制",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 29] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 29] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 30] 影响评估: RDP端口暴露在互联网，Windows实例面临暴力破解风险。风险评分: 70/100。",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 30] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 30] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 31] 关联分析: 同一资源 wide-open-dev-sg 还存在其他问题: ['SG-001', 'SG-002']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 31] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 31] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 32] 分析第11个发现 [IAM-001] IAM用户未启用MFA (严重程度: HIGH), 资源: admin-user。根因: IAM用户创建后未配置多因素认证设备",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 32] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 32] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 33] 影响评估: 仅凭密码即可登录控制台，账号容易被钓鱼或暴力破解劫持。风险评分: 70/100。",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 33] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 33] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 34] 关联分析: 同一资源 admin-user 还存在其他问题: ['IAM-002']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 34] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 34] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 35] 分析第12个发现 [EC2-002] EC2实例使用默认安全组 (严重程度: MEDIUM), 资源: web-server-prod-01。根因: 实例创建时未指定自定义安全组，自动关联了VPC默认安全组",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 35] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 35] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 36] 影响评估: 默认安全组规则可能过于宽松，且被多个资源共享，难以精细化管控。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 36] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 36] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 37] 关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-001', 'EC2-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 37] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 37] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 38] 分析第13个发现 [EC2-003] EC2实例无IAM角色 (严重程度: MEDIUM), 资源: web-server-prod-01。根因: 实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 38] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 38] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 39] 影响评估: 硬编码凭证容易泄露，且无法自动轮换，增加安全风险。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 39] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 39] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 40] 关联分析: 同一资源 web-server-prod-01 还存在其他问题: ['EC2-001', 'EC2-002']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 40] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 40] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 41] 分析第14个发现 [EC2-003] EC2实例无IAM角色 (严重程度: MEDIUM), 资源: dev-test-server。根因: 实例未配置IAM实例配置文件，应用可能使用硬编码凭证访问AWS服务",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 41] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 41] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:51"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 42] 影响评估: 硬编码凭证容易泄露，且无法自动轮换，增加安全风险。风险评分: 40/100。",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 42] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 42] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 43] 关联分析: 同一资源 dev-test-server 还存在其他问题: ['EC2-001']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 43] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 43] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 44] 分析第15个发现 [RDS-002] RDS实例未启用多可用区 (严重程度: MEDIUM), 资源: prod-mysql-main。根因: RDS实例创建时未启用多可用区部署，当前为单AZ部署",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 44] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 44] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 45] 影响评估: 单可用区故障将导致数据库不可用，影响业务连续性。风险评分: 60/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 45] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 45] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 46] 关联分析: 同一资源 prod-mysql-main 还存在其他问题: ['RDS-001', 'RDS-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 46] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 46] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 47] 分析第16个发现 [S3-002] S3存储桶未启用版本控制 (严重程度: LOW), 资源: company-public-assets-bucket。根因: 存储桶创建时未启用版本控制功能",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 47] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 47] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 48] 影响评估: 对象被覆盖或删除后无法恢复，影响数据完整性。风险评分: 40/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 48] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 48] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 49] 关联分析: 同一资源 company-public-assets-bucket 还存在其他问题: ['S3-001', 'S3-003']，问题可能相互关联",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 49] 执行: correlate",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 49] 关联分析完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 50] 分析第17个发现 [S3-002] S3存储桶未启用版本控制 (严重程度: LOW), 资源: company-backup-data。根因: 存储桶创建时未启用版本控制功能",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 50] 执行: analyze_root_cause",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 50] 根因分析完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "THOUGHT",
+      "message": "[Step 51] 影响评估: 对象被覆盖或删除后无法恢复，影响数据完整性。风险评分: 40/100。⚠️ 生产环境资源，风险升级!",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "ACTION",
+      "message": "[Step 51] 执行: assess_impact",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "AnalyzerAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 51] 影响评估完成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 1] 收到 17 个分析结果。9 个可自动生成CloudFormation修复模板，8 个需要手动修复。按风险评分排序处理",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 1] 执行: create_plan",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 1] 修复计划已创建",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 2] 为 [S3-001] S3存储桶公开访问 生成CloudFormation修复模板。资源: company-public-assets-bucket, 风险评分: 100",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 2] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 2] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 3] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 3] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 3] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 4] 为 [RDS-001] RDS实例公开可访问 生成CloudFormation修复模板。资源: prod-mysql-main, 风险评分: 100",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 4] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 4] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 5] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 5] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 5] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 6] 为 [SG-001] 安全组开放全部入站端口 生成CloudFormation修复模板。资源: wide-open-dev-sg, 风险评分: 100",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 6] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 6] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 7] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 7] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 7] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 8] 为 [EC2-001] EC2实例未加密EBS卷 生成CloudFormation修复模板。资源: web-server-prod-01, 风险评分: 90",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 8] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 8] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 9] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 9] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 9] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 10] 为 [S3-003] S3存储桶未启用服务端加密 生成CloudFormation修复模板。资源: company-public-assets-bucket, 风险评分: 90",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 10] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 10] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:52"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 11] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 11] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 11] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 12] 为 [RDS-003] RDS实例未启用自动备份 生成CloudFormation修复模板。资源: prod-mysql-main, 风险评分: 90",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 12] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 12] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 13] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 13] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 13] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 14] 为 [EC2-001] EC2实例未加密EBS卷 生成CloudFormation修复模板。资源: dev-test-server, 风险评分: 70",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 14] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 14] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 15] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 15] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 15] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 16] 为 [SG-002] 安全组开放SSH到全网 生成CloudFormation修复模板。资源: wide-open-dev-sg, 风险评分: 70",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 16] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 16] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 17] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 17] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 17] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 18] 为 [SG-003] 安全组开放RDP到全网 生成CloudFormation修复模板。资源: wide-open-dev-sg, 风险评分: 70",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 18] 执行: generate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 18] CloudFormation模板已生成",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 19] 验证生成的CloudFormation模板语法和资源依赖关系",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 19] 执行: validate_cfn",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 19] 模板验证通过",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "THOUGHT",
+      "message": "[Step 20] 修复计划生成完成。共生成 17 个修复计划，其中 9 个已生成自动修复模板，8 个需手动处理。所有模板已通过语法验证",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "ACTION",
+      "message": "[Step 20] 执行: create_plan",
+      "timestamp": "2026-05-01T20:53:53"
+    },
+    {
+      "agent": "RemediationAgent",
+      "event": "OBSERVATION",
+      "message": "[Step 20] 修复计划已创建",
+      "timestamp": "2026-05-01T20:53:53"
+    }
+  ]
+}
